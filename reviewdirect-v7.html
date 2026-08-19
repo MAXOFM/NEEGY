@@ -1333,12 +1333,16 @@ if(bookForm){
     if(!BOOKING_WEBHOOK_URL){ statusEl.textContent=tr('book.notReady'); return; }
     const data=Object.fromEntries(new FormData(bookForm).entries());
     data.lang=curLang; data.source='reviewdirect-site';
-    if(S.brand){
-      data.estimateBrand=S.brand; data.estimateModel=S.model||''; data.estimateYear=S.year||'';
-      data.estimateCity=S.city||''; data.estimateTotal=lastTotal||0;
-      data.estimateAxle = S.axle==='4' ? tr('axle.both4') : tr('axle.front2');
-      data.estimateOil = S.oil ? tr('oil.included') : '';
-    }
+    // toujours envoyer les mêmes champs (même vides) — un webhook Make sans
+    // Data Structure explicite peut mal interpréter des clés absentes selon
+    // les requêtes, ce qui a déjà cassé le mappage de date/heure une fois.
+    data.estimateBrand = S.brand && S.brand!==OTHER_KEY ? S.brand : '';
+    data.estimateModel = S.model || '';
+    data.estimateYear = S.brand ? (S.year||'') : '';
+    data.estimateCity = S.brand ? (S.city||'') : '';
+    data.estimateTotal = S.brand ? (lastTotal||0) : '';
+    data.estimateAxle = S.brand ? (S.axle==='4' ? tr('axle.both4') : tr('axle.front2')) : '';
+    data.estimateOil = (S.brand && S.oil) ? tr('oil.included') : '';
     // rendez-vous d'environ 90 min, pour l'événement d'agenda
     const start=new Date(`${data.date}T${data.time}:00`);
     if(!isNaN(start)){
