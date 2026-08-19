@@ -492,6 +492,9 @@
   footer{padding:34px 0;border-top:1px solid var(--line-soft);}
   .ft{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
   .ft p{color:#5c6673;font-size:.88rem;}
+  .ft-social{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);color:var(--dust);flex-shrink:0;transition:border-color .2s,color .2s,transform .2s;}
+  .ft-social:hover{border-color:var(--heat);color:var(--heat);transform:translateY(-2px);}
+  .ft-social svg{width:18px;height:18px;}
 </style>
 </head>
 <body>
@@ -577,6 +580,8 @@
   </div>
   <div class="marquee"><div class="marquee-track" id="mq"></div></div>
 </section>
+
+<div id="mobileFormAnchor"></div>
 
 <section class="blk cmp" id="pourquoi">
   <div class="wrap">
@@ -955,6 +960,9 @@
   <div class="wrap ft">
     <div class="logo" style="font-size:1.05rem;"><span class="logo-mark" style="width:20px;height:20px;border-width:2px;"></span>Review <em>Direct</em></div>
     <p data-i18n="footer.p">Freins et changement d'huile à domicile : Laval, Montréal, Terrebonne et environs.</p>
+    <a class="ft-social" href="https://www.instagram.com/514.450mobile/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
   </div>
 </footer>
 
@@ -1369,6 +1377,29 @@ if(priceBookBtn && bookForm){
     },500);
   });
 }
+
+/* sur mobile seulement, le configurateur (sélection du véhicule + prix) remonte
+   juste après le Hero pour que le client puisse commencer son estimation sans
+   tout scroller. Déplace le NŒUD DOM existant (jamais de duplication) pour ne
+   jamais créer d'IDs en double ni casser brandInput/modelGrid/priceBox/etc.
+   Repositionné aussi au resize (ex: rotation d'écran) pour rester cohérent des
+   deux côtés du seuil. */
+(function(){
+  const anchor=$('mobileFormAnchor'), estimationSection=$('estimation'), servicesSection=$('services');
+  if(!anchor || !estimationSection || !servicesSection) return;
+  const mq=window.matchMedia('(max-width:640px)');
+  let onMobile=null; // état inconnu au départ pour forcer le premier placement
+  function place(){
+    const isMobile=mq.matches;
+    if(isMobile===onMobile) return;
+    if(isMobile) anchor.insertAdjacentElement('afterend',estimationSection);
+    else servicesSection.insertAdjacentElement('beforebegin',estimationSection);
+    onMobile=isMobile;
+  }
+  place();
+  let rt;
+  window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(place,150); });
+})();
 
 /* compteur animé pour les stats de garantie (3 mois / 5000 km) */
 const statObs=new IntersectionObserver(es=>{es.forEach(e=>{
