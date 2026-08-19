@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="fr" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review Direct | Freins & huile à domicile | Laval · Montréal · Terrebonne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0b0d10; --graphite:#12151a; --panel:#171b21; --panel-2:#1e232b;
+    --line:#282e37; --line-soft:#1f242c; --dust:#7d8896; --chalk:#e8ecf1;
+    --heat:#ff5b1f; --ember:#ffb43d; --heat-glow:rgba(255,91,31,.30); --ok:#3ddc97;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--heat) var(--graphite);}
+  ::-webkit-scrollbar{width:10px;height:10px;}
+  ::-webkit-scrollbar-track{background:var(--graphite);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--heat),var(--ember));border-radius:6px;border:2px solid var(--graphite);}
+  ::-webkit-scrollbar-thumb:hover{background:var(--heat);}
+  body{background:var(--void);color:var(--chalk);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden;}
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--heat),var(--ember));z-index:200;box-shadow:0 0 8px var(--heat-glow);}
+  .spotlight{position:fixed;inset:0;pointer-events:none;z-index:3;background:radial-gradient(circle 420px at var(--mx,50%) var(--my,50%),rgba(255,91,31,.07),transparent 70%);opacity:0;transition:opacity .5s;}
+  .spotlight.on{opacity:1;}
+  @media (hover:none){.spotlight{display:none;}}
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:250;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
+  .side-dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:14px;}
+  @media (max-width:980px){.side-dots{display:none;}}
+  .side-dots .dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:1px solid var(--line);position:relative;display:block;transition:background .25s,transform .25s,border-color .25s;}
+  .side-dots .dot:hover{transform:scale(1.3);border-color:var(--heat);}
+  .side-dots .dot.active{background:var(--heat);border-color:var(--heat);box-shadow:0 0 10px var(--heat-glow);transform:scale(1.3);}
+  .side-dots .dot::after{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%) translateX(6px);font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dust);background:var(--panel);border:1px solid var(--line);padding:5px 10px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;}
+  .side-dots .dot:hover::after{opacity:1;transform:translateY(-50%) translateX(0);}
+  .mobile-call{display:none;}
+  @media (max-width:640px){
+    body{padding-bottom:76px;}
+    .mobile-call{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:120;align-items:center;justify-content:center;gap:10px;background:var(--heat);color:#0b0d10;font-weight:800;padding:15px;border-radius:14px;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:.92rem;box-shadow:0 14px 34px -10px var(--heat-glow);animation:mcPulse 2.6s ease-in-out infinite;}
+  }
+  @keyframes mcPulse{0%,100%{box-shadow:0 14px 34px -10px var(--heat-glow);}50%{box-shadow:0 14px 44px -6px var(--heat-glow);}}
+  h1,h2,h3,.disp{font-family:'Inter',sans-serif;font-weight:800;line-height:1.08;letter-spacing:-.01em;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+  input{font-family:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px;}
+  :focus-visible{outline:2px solid var(--heat);outline-offset:3px;border-radius:4px;}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--heat);display:inline-flex;align-items:center;gap:9px;}
+  .tag::before{content:'';width:22px;height:1px;background:var(--heat);}
+  @media (prefers-reduced-motion:reduce){*{animation:none !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}}
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);}
+  .rv.in{opacity:1;transform:none;}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:80;background:rgba(11,13,16,.82);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line-soft);}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 26px;max-width:1180px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-weight:800;font-size:1.3rem;text-transform:uppercase;letter-spacing:.02em;}
+  .logo-mark{width:26px;height:26px;border-radius:50%;border:2.5px solid var(--heat);position:relative;flex-shrink:0;box-shadow:0 0 14px var(--heat-glow);animation:logoPulse 3.4s ease-in-out infinite;}
+  @keyframes logoPulse{0%,100%{box-shadow:0 0 14px var(--heat-glow);}50%{box-shadow:0 0 22px 3px var(--heat-glow);}}
+  .logo-mark::after{content:'';position:absolute;inset:6px;border-radius:50%;border:1.5px solid rgba(255,91,31,.45);}
+  .logo em{font-style:normal;color:var(--heat);}
+  .nav-links{display:flex;gap:30px;font-size:.9rem;color:var(--dust);font-weight:500;}
+  .nav-links a{position:relative;padding:3px 0;transition:color .18s;}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--heat);transition:width .25s;}
+  .nav-links a:hover{color:var(--chalk);} .nav-links a:hover::after{width:100%;}
+  .nav-call{display:flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:.85rem;font-weight:700;padding:9px 18px;border-radius:999px;background:var(--heat);color:#0b0d10;transition:transform .16s,box-shadow .16s;white-space:nowrap;animation:navCallPulse 3s ease-in-out infinite;}
+  .nav-call:hover{transform:translateY(-1px);box-shadow:0 8px 26px var(--heat-glow);animation:none;}
+  @keyframes navCallPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,91,31,.35);}50%{box-shadow:0 0 0 6px rgba(255,91,31,0);}}
+  .lang-switch{display:flex;gap:2px;background:var(--panel-2);border:1px solid var(--line);border-radius:999px;padding:3px;flex-shrink:0;}
+  .lang-btn{font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:999px;color:var(--dust);transition:background .18s,color .18s;}
+  .lang-btn:hover{color:var(--chalk);}
+  .lang-btn.active{background:var(--heat);color:#0b0d10;}
+  @media (max-width:900px){.nav-links{display:none;}.logo{font-size:1.1rem;}}
+  @media (max-width:640px){.nav-call{display:none;}}
+  @media (max-width:520px){.lang-btn{padding:5px 8px;font-size:.6rem;}}
+  @media (max-width:400px){.lang-btn{padding:4px 6px;font-size:.55rem;}}
+
+  /* HERO */
+  .hero{position:relative;padding:66px 0 40px;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:900px;height:520px;background:radial-gradient(ellipse at center,rgba(255,91,31,.13),transparent 68%);pointer-events:none;animation:heroGlow 6s ease-in-out infinite;}
+  @keyframes heroGlow{0%,100%{opacity:.75;}50%{opacity:1;}}
+  .hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 39px,rgba(255,255,255,.028) 39px 40px),repeating-linear-gradient(90deg,transparent 0 39px,rgba(255,255,255,.028) 39px 40px);-webkit-mask-image:radial-gradient(ellipse 65% 55% at 50% 15%,#000 30%,transparent 78%);mask-image:radial-gradient(ellipse 65% 55% at 50% 15%,#000 30%,transparent 78%);pointer-events:none;}
+  .hero-top{position:relative;max-width:840px;}
+  .hero-wheel{position:absolute;top:30px;right:-30px;width:340px;height:340px;opacity:.92;pointer-events:none;}
+  @media (max-width:1100px){.hero-wheel{width:250px;height:250px;right:-50px;top:10px;}}
+  @media (max-width:900px){.hero-wheel{display:none;}}
+  .hero-wheel svg{width:100%;height:100%;overflow:visible;}
+  .hw-tire{fill:rgba(255,255,255,.02);stroke:#333c47;stroke-width:3;}
+  .hw-rim{fill:none;stroke:#3d4650;stroke-width:1.6;}
+  .hw-caliper{fill:#39424e;transform-box:fill-box;transform-origin:center;}
+  .hero-wheel.go .hw-caliper{animation:hwClamp .4s ease-out 2.05s both;}
+  @keyframes hwClamp{0%{transform:scale(1);}45%{transform:scale(.9);filter:drop-shadow(0 0 9px var(--heat));}100%{transform:scale(1);filter:none;}}
+  .hw-spin{transform-box:fill-box;transform-origin:center;}
+  .hero-wheel.go .hw-spin{animation:hwSpin 2.2s cubic-bezier(.13,.7,.2,1) both;}
+  @keyframes hwSpin{from{transform:rotate(0deg);}to{transform:rotate(1620deg);}}
+  .hw-rotor{fill:rgba(60,68,79,.3);stroke:#4a5461;stroke-width:2.4;transform-box:fill-box;transform-origin:center;}
+  .hw-hub{fill:#171b21;stroke:#4a5461;stroke-width:1.4;}
+  .hw-spokes line{stroke:#3d4650;stroke-width:2;}
+  .hero-wheel.go .hw-rotor{animation:hwHeat 1.3s ease-out 2.05s both;}
+  .hero-wheel.go .hw-spokes line{animation:hwHeatLine 1.3s ease-out 2.05s both;}
+  @keyframes hwHeat{0%{stroke:#4a5461;fill:rgba(60,68,79,.3);}35%{stroke:var(--heat);fill:rgba(255,91,31,.18);filter:drop-shadow(0 0 10px var(--heat));}100%{stroke:#4a5461;fill:rgba(60,68,79,.3);filter:none;}}
+  @keyframes hwHeatLine{35%{stroke:var(--ember);}100%{stroke:#3d4650;}}
+  .hw-flash{fill:none;stroke:var(--heat);stroke-width:3;opacity:0;transform-box:fill-box;transform-origin:center;}
+  .hero-wheel.go .hw-flash{animation:hwFlash .8s ease-out 2.05s both;}
+  @keyframes hwFlash{0%{opacity:0;transform:scale(.7);}35%{opacity:.85;}100%{opacity:0;transform:scale(1.55);}}
+  .hero h1{font-size:clamp(2.6rem,7.4vw,5.4rem);margin:16px 0 20px;letter-spacing:.005em;}
+  .hero h1 .out{color:transparent;-webkit-text-stroke:1.5px var(--heat);}
+  .hero .sub{color:var(--dust);font-size:1.1rem;max-width:52ch;}
+  .trust-row{display:flex;flex-wrap:wrap;margin-top:32px;border:1px solid var(--line);border-radius:14px;background:rgba(23,27,33,.6);backdrop-filter:blur(6px);overflow:hidden;position:relative;}
+  .trust-item{flex:1;min-width:210px;display:flex;align-items:center;gap:13px;padding:18px 20px;border-right:1px solid var(--line-soft);transition:background .2s;opacity:0;transform:translateY(10px);}
+  .trust-row.rv.in .trust-item{animation:itemUp .5s cubic-bezier(.2,.85,.3,1) forwards;}
+  .trust-row.rv.in .trust-item:nth-child(1){animation-delay:.05s;}
+  .trust-row.rv.in .trust-item:nth-child(2){animation-delay:.15s;}
+  .trust-row.rv.in .trust-item:nth-child(3){animation-delay:.25s;}
+  .trust-row.rv.in .trust-item:nth-child(4){animation-delay:.35s;}
+  @keyframes itemUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .trust-item:last-child{border-right:none;}
+  .trust-item:hover{background:rgba(255,255,255,.02);}
+  .trust-item svg{width:22px;height:22px;color:var(--heat);flex-shrink:0;}
+  .trust-item strong{display:block;font-family:'Inter',sans-serif;font-weight:800;font-size:.9rem;text-transform:uppercase;letter-spacing:.01em;color:var(--chalk);}
+  .trust-item span{display:block;font-size:.76rem;color:var(--dust);margin-top:3px;line-height:1.3;}
+  @media (max-width:900px){.trust-item{min-width:50%;border-bottom:1px solid var(--line-soft);}.trust-item:nth-child(2n){border-right:none;}}
+  @media (max-width:560px){.trust-item{min-width:100%;border-right:none;}}
+  .marquee{margin-top:34px;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);overflow:hidden;padding:11px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+  .marquee-track{display:flex;gap:44px;width:max-content;animation:slide 26s linear infinite;}
+  .marquee-item{font-family:'IBM Plex Mono',monospace;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dust);display:flex;align-items:center;gap:10px;white-space:nowrap;}
+  .marquee-item b{color:var(--heat);font-weight:700;}
+  @keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* CONFIG */
+  .config{padding:56px 0 88px;}
+  .config-shell{background:linear-gradient(165deg,var(--panel) 0%,var(--graphite) 100%);border:1px solid var(--line);border-radius:20px;position:relative;}
+  .config-shell::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,91,31,.5),transparent);}
+  .config-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 26px;border-bottom:1px solid var(--line-soft);font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dust);}
+  .live{display:flex;align-items:center;gap:8px;color:var(--heat);}
+  .live-dot{width:7px;height:7px;border-radius:50%;background:var(--heat);animation:blip 1.6s ease-in-out infinite;}
+  @keyframes blip{0%,100%{opacity:1;}50%{opacity:.4;}}
+  .config-body{display:grid;grid-template-columns:1.05fr 1fr;}
+  @media (max-width:980px){.config-body{grid-template-columns:1fr;}}
+
+  /* STAGE */
+  .stage{position:relative;padding:30px 26px;border-right:1px solid var(--line-soft);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:490px;overflow:hidden;
+    background:radial-gradient(ellipse at 50% 48%,rgba(255,91,31,.06),transparent 62%),
+      repeating-linear-gradient(0deg,transparent 0 39px,var(--line-soft) 39px 40px),
+      repeating-linear-gradient(90deg,transparent 0 39px,var(--line-soft) 39px 40px);}
+  @media (max-width:980px){.stage{border-right:none;border-bottom:1px solid var(--line-soft);min-height:380px;}}
+  .stage-empty{text-align:center;color:var(--dust);font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;line-height:1.9;display:flex;flex-direction:column;align-items:center;}
+  .stage-empty .hint-ic{width:30px;height:30px;margin:0 auto 14px;opacity:.5;}
+  .stage.armed .stage-empty{display:none;}
+  .ghost-wrap{position:relative;width:82%;max-width:320px;aspect-ratio:460/215;margin-bottom:20px;}
+  .ghost-car{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+  .ghost-car path,.ghost-car circle{fill:none;stroke:var(--dust);stroke-width:2;stroke-linecap:round;stroke-dasharray:7 6;opacity:.4;animation:ghostDash 24s linear infinite,ghostPulse 3.6s ease-in-out infinite;}
+  .ghost-car circle{stroke-dasharray:4 5;}
+  @keyframes ghostDash{to{stroke-dashoffset:-400;}}
+  @keyframes ghostPulse{0%,100%{opacity:.3;}50%{opacity:.62;}}
+  .ghost-corner{position:absolute;width:16px;height:16px;border:1.5px solid var(--heat);opacity:.3;animation:cornerPulse 3.6s ease-in-out infinite;}
+  .ghost-corner.tl{top:-6px;left:-6px;border-right:none;border-bottom:none;}
+  .ghost-corner.tr{top:-6px;right:-6px;border-left:none;border-bottom:none;}
+  .ghost-corner.bl{bottom:-6px;left:-6px;border-right:none;border-top:none;}
+  .ghost-corner.br{bottom:-6px;right:-6px;border-left:none;border-top:none;}
+  @keyframes cornerPulse{0%,100%{opacity:.22;}50%{opacity:.7;}}
+  .ghost-scan{position:absolute;left:4%;right:4%;height:1.5px;top:15%;background:linear-gradient(90deg,transparent,rgba(255,91,31,.55),transparent);opacity:0;animation:ghostSweep 4.8s ease-in-out infinite;pointer-events:none;}
+  @keyframes ghostSweep{0%{top:15%;opacity:0;}10%{opacity:.85;}50%{top:82%;opacity:.85;}90%{opacity:0;}100%{top:82%;opacity:0;}}
+  .car-holder{display:none;flex-direction:column;align-items:center;gap:18px;width:100%;}
+  .stage.armed .car-holder{display:flex;}
+  .car-svg{width:100%;max-width:440px;height:auto;overflow:visible;}
+  .car-svg.swap{animation:swapIn .6s cubic-bezier(.2,.85,.3,1);}
+  @keyframes swapIn{0%{opacity:0;transform:translateX(-26px) scale(.97);}100%{opacity:1;transform:none;}}
+
+  .cbody{fill:rgba(255,255,255,.03);stroke:#525c6a;stroke-width:2;stroke-linejoin:round;}
+  .cglass{fill:rgba(125,136,150,.11);stroke:#39424e;stroke-width:1.4;}
+  .cline{fill:none;stroke:#333c47;stroke-width:1.3;}
+  .tire{fill:#14171c;stroke:#3d4650;stroke-width:1.6;}
+  .rim{fill:none;stroke:#39424e;stroke-width:1.2;}
+  .rotor{fill:rgba(60,68,79,.35);stroke:#4a5461;stroke-width:2.4;transition:stroke .5s,fill .5s,filter .5s;}
+  .spoke{stroke:#3d4650;stroke-width:1.2;transition:stroke .5s;}
+  .cal{fill:#39424e;transition:fill .5s;}
+  .hot .rotor{stroke:var(--heat);fill:rgba(255,91,31,.15);filter:drop-shadow(0 0 8px var(--heat));}
+  .hot .spoke{stroke:var(--ember);}
+  .hot .cal{fill:var(--heat);}
+  .halo{fill:none;stroke:var(--heat);stroke-width:1.5;opacity:0;}
+  .hot .halo{animation:ripple 2.4s ease-out infinite;}
+  @keyframes ripple{0%{opacity:.6;transform:scale(.85);}100%{opacity:0;transform:scale(1.5);}}
+  .ground{stroke:#242a32;stroke-width:1.5;stroke-dasharray:6 8;}
+  .axl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;fill:#5c6673;letter-spacing:.12em;transition:fill .4s;}
+  .axl.on{fill:var(--heat);}
+  /* real vehicle photo */
+  .car-photo{width:100%;max-width:430px;display:none;position:relative;}
+  .car-photo.show{display:block;animation:swapIn .6s cubic-bezier(.2,.85,.3,1);}
+  .car-photo img{width:100%;height:auto;display:block;filter:drop-shadow(0 22px 28px rgba(0,0,0,.6));}
+  .car-photo.show img{animation:photoDevelop .7s ease;}
+  @keyframes photoDevelop{0%{filter:drop-shadow(0 22px 28px rgba(0,0,0,.6)) blur(7px) brightness(1.35);opacity:0;}100%{filter:drop-shadow(0 22px 28px rgba(0,0,0,.6)) blur(0) brightness(1);opacity:1;}}
+  .car-photo .loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.16em;color:var(--dust);text-transform:uppercase;}
+  .rotor-row{display:none;gap:12px;width:100%;max-width:430px;}
+  .rotor-row.show{display:flex;}
+  .rcell{flex:1;display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:rgba(23,27,33,.8);transition:border-color .45s,background .45s;}
+  .rcell.hot{border-color:rgba(255,91,31,.55);background:rgba(255,91,31,.08);}
+  .rcell>svg{width:34px;height:34px;flex-shrink:0;color:#4a5461;transition:color .45s,filter .45s;}
+  .rcell.hot>svg{color:var(--heat);filter:drop-shadow(0 0 7px var(--heat));}
+  .rcell .rlbl{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dust);}
+  .rcell .rst{font-family:'Inter',sans-serif;font-weight:800;font-size:1.05rem;text-transform:uppercase;color:#5c6673;transition:color .45s;letter-spacing:.02em;}
+  .rcell.hot .rst{color:var(--heat);}
+
+  .scanline{position:absolute;left:6%;right:6%;height:2px;background:linear-gradient(90deg,transparent,var(--heat),transparent);box-shadow:0 0 16px 2px var(--heat-glow);opacity:0;pointer-events:none;top:14%;}
+  .scanline.go{animation:scanSweep 1s cubic-bezier(.4,0,.2,1);}
+  @keyframes scanSweep{0%{opacity:0;top:14%;}12%{opacity:1;}88%{opacity:1;}100%{opacity:0;top:82%;}}
+  .car-cap{text-align:center;}
+  .car-cap .nm{font-family:'Inter',sans-serif;font-weight:800;font-size:1.6rem;line-height:1.1;letter-spacing:-.01em;}
+  .car-cap .meta{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dust);margin-top:8px;}
+  .car-cap .meta em{font-style:normal;color:var(--heat);}
+
+  /* PANEL */
+  .panel{padding:30px 30px 34px;display:flex;flex-direction:column;gap:22px;}
+  .field-label{font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dust);display:flex;align-items:center;gap:9px;margin-bottom:11px;}
+  .field-label i{width:21px;height:21px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:.68rem;transition:all .3s;flex-shrink:0;}
+  .field.done .field-label i{background:var(--heat);border-color:var(--heat);color:#0b0d10;font-weight:700;animation:doneP .5s ease;}
+  @keyframes doneP{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,91,31,.55);}55%{transform:scale(1.3);box-shadow:0 0 0 7px rgba(255,91,31,0);}100%{transform:scale(1);}}
+  .field.done .field-label{color:var(--chalk);}
+  .field-label .chg{margin-left:auto;font-size:.7rem;letter-spacing:.12em;color:var(--heat);text-decoration:underline;text-underline-offset:3px;display:none;}
+  .field.done .field-label .chg{display:inline;}
+
+  /* BRAND SEARCH */
+  .combo{position:relative;}
+  .combo-field{display:flex;align-items:center;gap:10px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:0 12px;transition:border-color .2s,box-shadow .2s;}
+  .combo.open .combo-field,.combo-field:focus-within{border-color:var(--heat);box-shadow:0 0 0 3px rgba(255,91,31,.10);}
+  .combo.picked .combo-field{border-color:rgba(255,91,31,.5);}
+  .combo-field>svg{width:16px;height:16px;color:var(--dust);flex-shrink:0;}
+  .combo.picked .combo-field>svg{color:var(--heat);}
+  .combo-field input{flex:1;background:none;border:none;outline:none;color:var(--chalk);font-size:.94rem;padding:12px 0;min-width:0;}
+  .combo-field input::placeholder{color:#5c6673;}
+  .combo-clear{width:22px;height:22px;border-radius:50%;background:var(--line);color:var(--dust);font-size:.8rem;line-height:1;display:none;align-items:center;justify-content:center;flex-shrink:0;}
+  .combo.picked .combo-clear{display:flex;}
+  .combo-clear:hover{background:var(--heat);color:#0b0d10;}
+  .combo-list{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:30;background:#1a1f26;border:1px solid var(--line);border-radius:11px;max-height:240px;overflow-y:auto;padding:5px;box-shadow:0 22px 50px -18px rgba(0,0,0,.85);display:none;}
+  .combo.open .combo-list{display:block;animation:dropIn .22s ease;}
+  @keyframes dropIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+  .combo-list::-webkit-scrollbar{width:6px;}
+  .combo-list::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
+  .opt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;padding:9px 11px;border-radius:7px;font-size:.9rem;color:var(--dust);transition:background .12s,color .12s;opacity:0;animation:optIn .26s cubic-bezier(.2,.85,.3,1) forwards;}
+  @keyframes optIn{from{opacity:0;transform:translateY(-5px);}to{opacity:1;transform:none;}}
+  .opt:hover,.opt.cursor{background:rgba(255,91,31,.13);color:var(--chalk);}
+  .opt-nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .opt .bt{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:#5c6673;flex-shrink:0;}
+  .opt .hl{color:var(--heat);font-weight:700;}
+  .opt-none{padding:14px 11px;font-size:.92rem;color:#5c6673;text-align:center;}
+
+  /* MODEL GRID */
+  .mgrid-shell{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s cubic-bezier(.3,.8,.3,1),opacity .4s ease;}
+  .mgrid-shell.open{max-height:420px;opacity:1;}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px;max-height:330px;overflow-y:auto;padding:3px 5px 3px 0;}
+  .mgrid::-webkit-scrollbar{width:6px;}
+  .mgrid::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
+  .mcard{
+    position:relative;overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;gap:5px;padding:11px 7px 9px;
+    background:var(--panel-2);border:1px solid var(--line);border-radius:11px;
+    transition:border-color .2s,transform .2s,background .2s,box-shadow .2s;
+    opacity:0;animation:cardIn .42s cubic-bezier(.2,.85,.3,1) forwards;
+  }
+  @keyframes cardIn{from{opacity:0;transform:translateY(12px) scale(.94);}to{opacity:1;transform:none;}}
+  .mcard::after{content:'';position:absolute;top:-30%;left:-70%;width:35%;height:160%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.09),transparent);transform:skewX(-20deg);transition:transform .65s ease;pointer-events:none;}
+  .mcard:hover::after{transform:translateX(260%) skewX(-20deg);}
+  .mcard:hover{border-color:#57616f;transform:translateY(-3px);background:#232932;}
+  .mcard.on{border-color:var(--heat);background:rgba(255,91,31,.09);box-shadow:0 6px 22px -8px var(--heat-glow);}
+  .mcard svg{width:100%;height:34px;filter:drop-shadow(0 3px 3px rgba(0,0,0,.35));transition:filter .25s;}
+  .mcard .msil{fill:rgba(255,255,255,.025);stroke:#6b7684;stroke-width:9;stroke-linejoin:round;stroke-linecap:round;transition:stroke .2s,fill .2s;}
+  .mcard .mwh{fill:#0f1217;stroke:#6b7684;stroke-width:8;transition:stroke .2s;}
+  .mcard:hover .msil,.mcard:hover .mwh{stroke:#9aa5b3;}
+  .mcard:hover .msil{fill:rgba(255,255,255,.05);}
+  .mcard.on .msil,.mcard.on .mwh{stroke:var(--heat);}
+  .mcard.on .msil{fill:rgba(255,91,31,.08);}
+  .mcard.on svg{filter:drop-shadow(0 3px 3px rgba(0,0,0,.35)) drop-shadow(0 0 9px rgba(255,91,31,.35));}
+  .mcard .mname{font-family:'Inter',sans-serif;font-weight:700;font-size:.86rem;text-align:center;line-height:1.15;color:var(--chalk);letter-spacing:0;}
+  .mcard .mbody{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:#5c6673;text-align:center;}
+  .mcard.on .mbody{color:var(--heat);}
+
+  /* CONTROLS */
+  .yr-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .yr-val{font-family:'IBM Plex Mono',monospace;font-size:1.45rem;font-weight:700;color:var(--heat);}
+  .yr-range{width:100%;accent-color:var(--heat);height:4px;cursor:pointer;}
+  .yr-bounds{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#5c6673;margin-top:7px;text-align:center;}
+  .field-select{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:13px 38px 13px 14px;color:var(--chalk);font-size:.94rem;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color .2s,box-shadow .2s;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237d8896' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;}
+  .field-select:focus{outline:none;border-color:var(--heat);box-shadow:0 0 0 3px rgba(255,91,31,.10);}
+  .field-select option,.field-select optgroup{background:#1a1f26;color:var(--chalk);}
+  .awd-hint{display:none;align-items:flex-start;gap:8px;margin-top:12px;padding:10px 12px;border-radius:9px;background:rgba(255,91,31,.08);border:1px solid rgba(255,91,31,.25);font-size:.8rem;line-height:1.4;color:var(--dust);}
+  .awd-hint.show{display:flex;}
+  .awd-hint svg{width:15px;height:15px;color:var(--heat);flex-shrink:0;margin-top:1px;}
+  .seg{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:4px;}
+  .seg-pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--heat);border-radius:7px;box-shadow:0 4px 16px var(--heat-glow);transition:transform .36s cubic-bezier(.4,1.5,.5,1);}
+  .seg-pill.right{transform:translateX(100%);}
+  .seg-opt{position:relative;z-index:2;padding:10px 8px;text-align:center;font-size:.9rem;font-weight:500;color:var(--dust);transition:color .28s;line-height:1.25;}
+  .seg-opt small{display:block;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;opacity:.75;margin-top:2px;}
+  .seg-opt.on{color:#0b0d10;font-weight:700;}
+  .addon{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 15px;border:1px solid var(--line);border-radius:10px;background:var(--panel-2);cursor:pointer;transition:border-color .2s,background .2s;}
+  .addon:hover{border-color:#48525f;}
+  .addon.on{border-color:var(--heat);background:rgba(255,91,31,.07);}
+  .addon-l{display:flex;align-items:center;gap:11px;font-size:.94rem;}
+  .addon-l>svg{width:18px;height:18px;color:var(--heat);flex-shrink:0;}
+  .addon-box{width:19px;height:19px;border-radius:5px;border:1.5px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+  .addon.on .addon-box{background:var(--heat);border-color:var(--heat);}
+  .addon-box svg{width:12px;height:12px;color:#0b0d10;opacity:0;transition:opacity .2s;}
+  .addon.on .addon-box svg{opacity:1;}
+  .addon-box svg path{stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .3s ease .05s;}
+  .addon.on .addon-box svg path{stroke-dashoffset:0;}
+  .addon-p{font-family:'IBM Plex Mono',monospace;font-size:.9rem;color:var(--dust);}
+
+  .price-box{margin-top:auto;padding-top:22px;border-top:1px dashed var(--line);opacity:.35;transition:opacity .45s;}
+  .price-box.ready{opacity:1;}
+  .price-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:5px;}
+  .price-lbl{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dust);}
+  .price-amt{font-family:'Inter',sans-serif;font-weight:800;font-size:3.1rem;line-height:.9;display:flex;align-items:flex-start;gap:4px;letter-spacing:-.02em;}
+  .price-amt.bump #price{animation:priceBump .5s ease;}
+  @keyframes priceBump{0%{text-shadow:0 0 0 rgba(255,91,31,0);}30%{text-shadow:0 0 20px rgba(255,91,31,.6);}100%{text-shadow:0 0 0 rgba(255,91,31,0);}}
+  .price-amt .cur{font-size:1.3rem;color:var(--heat);margin-top:5px;}
+  .price-note{font-size:.85rem;color:#5c6673;margin-bottom:16px;}
+  .cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--heat);color:#0b0d10;font-weight:700;font-size:.96rem;padding:15px 22px;border-radius:11px;transition:transform .16s,box-shadow .16s;font-family:'Inter',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.04em;position:relative;overflow:hidden;}
+  .cta::before{content:'';position:absolute;top:-40%;left:-60%;width:35%;height:180%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:ctaShine 3.2s ease-in-out infinite;}
+  @keyframes ctaShine{0%{transform:translateX(-40%) skewX(-20deg);}55%,100%{transform:translateX(340%) skewX(-20deg);}}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 12px 34px var(--heat-glow);}
+  .cta-alt{display:block;text-align:center;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:#5c6673;transition:color .2s;}
+  .cta-alt:hover{color:var(--heat);}
+
+  /* SECTIONS */
+  section.blk{padding:96px 0;}
+  @media (max-width:640px){section.blk{padding:56px 0;}}
+  .head{max-width:640px;margin-bottom:52px;}
+  @media (max-width:640px){.head{margin-bottom:36px;}}
+  .head h2{font-size:clamp(1.9rem,4.4vw,3rem);margin:14px 0;}
+  .head p{color:var(--dust);font-size:1.02rem;}
+  .svc{background:var(--graphite);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px;}
+  @media (max-width:800px){.cmp-grid{grid-template-columns:1fr;}}
+  .cmp-col{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px 28px;position:relative;overflow:hidden;transition:transform .25s;}
+  .cmp-col.bad{opacity:.8;}
+  .cmp-col.good{border-color:rgba(255,91,31,.4);background:linear-gradient(165deg,rgba(255,91,31,.07),var(--panel) 60%);}
+  .cmp-col.good::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--heat),transparent);}
+  .cmp-col:hover{transform:translateY(-3px);}
+  .cmp-h{display:flex;align-items:center;gap:11px;font-family:'Inter',sans-serif;font-weight:800;font-size:1.05rem;text-transform:uppercase;margin-bottom:20px;letter-spacing:.02em;}
+  .cmp-h.bad{color:#8892a0;}
+  .cmp-h.good{color:var(--heat);}
+  .cmp-h i{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cmp-h.bad i{background:rgba(255,255,255,.05);color:#5c6673;}
+  .cmp-h.good i{background:rgba(255,91,31,.15);color:var(--heat);}
+  .cmp-h i svg{width:13px;height:13px;}
+  .cmp-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+  .cmp-list li{display:flex;gap:11px;align-items:flex-start;font-size:.98rem;line-height:1.4;}
+  .cmp-list.bad li{color:#6b7481;}
+  .cmp-list.good li{color:var(--chalk);}
+  .cmp-list li svg{width:15px;height:15px;flex-shrink:0;margin-top:3px;}
+  .cmp-list.bad li svg{color:#4a5461;}
+  .cmp-list.good li svg{color:var(--heat);}
+  .cmp-list li svg path{stroke-dasharray:24;stroke-dashoffset:24;}
+  .cmp .rv.in li:nth-child(1) svg path{animation:checkDraw .4s ease forwards .05s;}
+  .cmp .rv.in li:nth-child(2) svg path{animation:checkDraw .4s ease forwards .15s;}
+  .cmp .rv.in li:nth-child(3) svg path{animation:checkDraw .4s ease forwards .25s;}
+  .cmp .rv.in li:nth-child(4) svg path{animation:checkDraw .4s ease forwards .35s;}
+  .cmp .rv.in li:nth-child(5) svg path{animation:checkDraw .4s ease forwards .45s;}
+  .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  @media (max-width:800px){.svc-grid{grid-template-columns:1fr;}}
+  .svc-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:34px 30px;position:relative;overflow:hidden;transition:border-color .25s,transform .1s ease-out;will-change:transform;}
+  .svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--heat),transparent);transform:scaleX(0);transition:transform .45s ease;}
+  .svc-card::after{content:'';position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,91,31,.10),transparent 70%);opacity:0;transition:opacity .35s;}
+  .svc-card:hover{border-color:rgba(255,91,31,.4);}
+  .svc-card:hover::before{transform:scaleX(1);}
+  .svc-card:hover::after{opacity:1;}
+  .svc-ic{width:46px;height:46px;border-radius:11px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:transform .35s cubic-bezier(.3,.8,.3,1.4),background .3s;}
+  .svc-ic svg{width:24px;height:24px;color:var(--heat);}
+  .svc-card:hover .svc-ic{transform:rotate(-8deg) scale(1.1);background:rgba(255,91,31,.14);}
+  .svc-card h3{font-size:1.4rem;margin-bottom:10px;}
+  .svc-card p{color:var(--dust);font-size:1rem;margin-bottom:18px;}
+  .pills{display:flex;gap:7px;flex-wrap:wrap;}
+  .pill{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:6px;background:var(--panel-2);color:var(--dust);opacity:0;transform:scale(.85);}
+  .svc-card.rv.in .pill{animation:pillPop .35s cubic-bezier(.3,.9,.4,1.3) forwards;}
+  .svc-card.rv.in .pill:nth-child(1){animation-delay:.15s;}
+  .svc-card.rv.in .pill:nth-child(2){animation-delay:.24s;}
+  .svc-card.rv.in .pill:nth-child(3){animation-delay:.33s;}
+  @keyframes pillPop{from{opacity:0;transform:scale(.85);}to{opacity:1;transform:scale(1);}}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  @media (max-width:920px){.steps{grid-template-columns:1fr 1fr;}}
+  @media (max-width:540px){.steps{grid-template-columns:1fr;}}
+  .step-c{position:relative;padding-top:22px;border-top:1px solid var(--line);transition:transform .25s ease;}
+  .step-c::before{content:'';position:absolute;top:-1px;left:0;width:34px;height:2px;background:var(--heat);z-index:1;}
+  .step-c::after{content:'';position:absolute;top:-1px;left:34px;right:0;height:2px;background-image:repeating-linear-gradient(90deg,rgba(255,91,31,.4) 0 6px,transparent 6px 14px);background-size:28px 100%;animation:flowDash 2.6s linear infinite;opacity:.65;}
+  @keyframes flowDash{to{background-position:-28px 0;}}
+  .step-c:hover{transform:translateY(-3px);}
+  .step-n{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.16em;color:var(--heat);margin-bottom:10px;transition:color .25s;}
+  .step-c:hover .step-n{color:var(--ember);}
+  .step-c h3{font-size:1.15rem;margin-bottom:8px;}
+  .step-c p{color:var(--dust);font-size:.96rem;}
+  .war{background:var(--graphite);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+  .war-in{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media (max-width:880px){.war-in{grid-template-columns:1fr;gap:38px;}}
+  .war ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:24px;}
+  .war li{display:flex;gap:11px;align-items:flex-start;color:var(--dust);font-size:.96rem;}
+  .war li svg{width:17px;height:17px;color:var(--ok);flex-shrink:0;margin-top:4px;}
+  .war li svg path{stroke-dasharray:24;stroke-dashoffset:24;}
+  .war .rv.in li:nth-child(1) svg path{animation:checkDraw .45s ease forwards .05s;}
+  .war .rv.in li:nth-child(2) svg path{animation:checkDraw .45s ease forwards .2s;}
+  .war .rv.in li:nth-child(3) svg path{animation:checkDraw .45s ease forwards .35s;}
+  @keyframes checkDraw{to{stroke-dashoffset:0;}}
+  .stats{display:flex;gap:18px;flex-wrap:wrap;}
+  .stat{flex:1;min-width:145px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 26px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s;}
+  .stat:hover{transform:translateY(-3px);border-color:rgba(255,91,31,.35);}
+  .stat::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--heat);}
+  .stat .n{font-family:'Inter',sans-serif;font-weight:800;font-size:3.1rem;line-height:.9;letter-spacing:-.02em;}
+  .stat .l{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dust);margin-top:10px;}
+  @media (max-width:420px){.stat{min-width:100%;padding:24px 22px;}.stat .n{font-size:2.5rem;}}
+  .zone-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;}
+  @media (max-width:880px){.zone-in{grid-template-columns:1fr;gap:44px;}}
+  .radar{position:relative;width:100%;max-width:320px;aspect-ratio:1;margin:0 auto;}
+  .radar-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--line);border-radius:50%;animation:ringPulse 3.6s ease-in-out infinite;}
+  .radar-ring:nth-child(2){animation-delay:.3s;}
+  .radar-ring:nth-child(3){animation-delay:.6s;}
+  @keyframes ringPulse{0%,100%{border-color:var(--line);}50%{border-color:rgba(255,91,31,.4);}}
+  .radar-sweep{position:absolute;top:50%;left:50%;width:50%;height:1.5px;transform-origin:0 50%;background:linear-gradient(90deg,var(--heat),transparent);animation:spin 5s linear infinite;}
+  @keyframes spin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+  .radar-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:var(--heat);box-shadow:0 0 0 6px var(--heat-glow);}
+  .blip{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--ember);transform:translate(-50%,-50%);}
+  .blip::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--ember);opacity:0;animation:blipPing 2.6s ease-out infinite;animation-delay:var(--pd,0s);}
+  @keyframes blipPing{0%{opacity:.7;transform:scale(.4);}100%{opacity:0;transform:scale(2.8);}}
+  .blip::after{content:attr(data-city);position:absolute;left:11px;top:-6px;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--dust);white-space:nowrap;text-transform:uppercase;}
+  .zchips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px;}
+  .zchip{padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-size:.92rem;color:var(--dust);transition:border-color .2s,color .2s;opacity:0;transform:translateY(6px) scale(.92);}
+  .rv.in .zchip{animation:chipUp .35s cubic-bezier(.2,.85,.3,1) forwards;}
+  .rv.in .zchip:nth-child(1){animation-delay:0s;} .rv.in .zchip:nth-child(2){animation-delay:.03s;}
+  .rv.in .zchip:nth-child(3){animation-delay:.06s;} .rv.in .zchip:nth-child(4){animation-delay:.09s;}
+  .rv.in .zchip:nth-child(5){animation-delay:.12s;} .rv.in .zchip:nth-child(6){animation-delay:.15s;}
+  .rv.in .zchip:nth-child(7){animation-delay:.18s;} .rv.in .zchip:nth-child(8){animation-delay:.21s;}
+  .rv.in .zchip:nth-child(9){animation-delay:.24s;} .rv.in .zchip:nth-child(10){animation-delay:.27s;}
+  .rv.in .zchip:nth-child(n+11){animation-delay:.3s;}
+  @keyframes chipUp{from{opacity:0;transform:translateY(6px) scale(.92);}to{opacity:1;transform:none;}}
+  .zchip:hover{border-color:rgba(255,91,31,.5);transform:translateY(-2px);color:var(--chalk);}
+  .zchip.key{border-color:rgba(255,91,31,.5);color:var(--chalk);background:rgba(255,91,31,.07);}
+  .rv.in .zchip.key{animation:chipUp .35s cubic-bezier(.2,.85,.3,1) forwards,chipGlow 3.2s ease-in-out .35s infinite;}
+  @keyframes chipGlow{0%,100%{box-shadow:0 0 0 rgba(255,91,31,0);}50%{box-shadow:0 0 14px rgba(255,91,31,.25);}}
+  .zchips-toggle{display:none;}
+  @media (max-width:640px){
+    .zchips-more{max-height:0;overflow:hidden;margin-top:0;transition:max-height .5s ease,margin-top .3s ease;}
+    .zchips-more.open{max-height:1400px;margin-top:22px;}
+    .zchips-toggle{display:flex;align-items:center;gap:7px;margin-top:16px;padding:10px 4px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.04em;color:var(--heat);}
+    .zchips-toggle svg{width:14px;height:14px;transition:transform .3s ease;}
+    .zchips-toggle.open svg{transform:rotate(180deg);}
+  }
+  .ctc{text-align:center;border-top:1px solid var(--line-soft);background:radial-gradient(ellipse at 50% 120%,rgba(255,91,31,.14),transparent 62%);}
+  .ctc h2{font-size:clamp(2rem,5vw,3.6rem);margin-bottom:16px;}
+  .ctc .sub{color:var(--dust);max-width:48ch;margin:0 auto 38px;}
+  .phones{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .ph{display:flex;flex-direction:column;align-items:center;gap:5px;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:24px 38px;min-width:230px;transition:all .2s;}
+  .ph:hover{border-color:var(--heat);transform:translateY(-3px);box-shadow:0 16px 40px -16px var(--heat-glow);}
+  .ph .t{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dust);display:flex;align-items:center;gap:6px;}
+  .ph-dot{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:dotPulse 1.8s ease-in-out infinite;}
+  @keyframes dotPulse{0%{box-shadow:0 0 0 0 rgba(61,220,151,.45);}70%{box-shadow:0 0 0 6px rgba(61,220,151,0);}100%{box-shadow:0 0 0 0 rgba(61,220,151,0);}}
+  .ph .n{font-family:'IBM Plex Mono',monospace;font-size:1.32rem;font-weight:700;}
+  .book-form{max-width:560px;margin:44px auto 0;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px;}
+  .bf-lead{grid-column:1/-1;color:var(--dust);font-size:.9rem;margin-bottom:20px;text-align:center;}
+  .bf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  @media (max-width:560px){.bf-row{grid-template-columns:1fr;}}
+  .bf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+  .bf-row .bf-field{margin-bottom:0;}
+  .bf-field.bf-full{margin-bottom:16px;}
+  .bf-field label{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dust);}
+  .bf-field input,.bf-field textarea{background:var(--panel-2);border:1px solid var(--line);border-radius:9px;padding:11px 13px;color:var(--chalk);font-family:'Inter',sans-serif;font-size:.95rem;transition:border-color .2s,box-shadow .2s;}
+  .bf-field input:focus,.bf-field textarea:focus{outline:none;border-color:var(--heat);box-shadow:0 0 0 3px var(--heat-glow);}
+  .bf-field textarea{resize:vertical;min-height:70px;font-family:inherit;}
+  .bf-submit{width:100%;margin-top:6px;padding:15px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--heat),var(--ember));color:#fff;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .2s;}
+  .bf-submit:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px var(--heat-glow);}
+  .bf-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+  .bf-status{margin-top:12px;text-align:center;font-size:.86rem;color:var(--dust);min-height:1.2em;}
+  .vid-grid{display:flex;gap:18px;margin-top:36px;overflow-x:auto;padding:6px 4px 14px;scroll-snap-type:x proximity;-webkit-mask-image:linear-gradient(90deg,transparent,#000 1.5%,#000 98.5%,transparent);mask-image:linear-gradient(90deg,transparent,#000 1.5%,#000 98.5%,transparent);}
+  .vid-card{flex:0 0 auto;width:300px;scroll-snap-align:start;background:var(--panel);border:1px solid var(--line);border-radius:14px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;}
+  @media (max-width:640px){.vid-card{width:76vw;}}
+  .vid-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--heat),transparent);transform:scaleX(0);transition:transform .4s ease;z-index:2;}
+  .vid-card::after{content:'';position:absolute;top:-30%;left:-70%;width:35%;height:160%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.12),transparent);transform:skewX(-20deg);transition:transform .7s ease;pointer-events:none;z-index:2;}
+  .vid-card:hover{border-color:rgba(255,91,31,.4);transform:translateY(-5px);box-shadow:0 16px 30px -14px rgba(255,91,31,.35);}
+  .vid-card:hover::before{transform:scaleX(1);}
+  .vid-card:hover::after{transform:translateX(260%) skewX(-20deg);}
+  .vid-grid.rv.in .vid-card{animation:vidPop .5s cubic-bezier(.2,.85,.3,1) both;}
+  .vid-grid.rv.in .vid-card:nth-child(1){animation-delay:.05s;}
+  .vid-grid.rv.in .vid-card:nth-child(2){animation-delay:.14s;}
+  .vid-grid.rv.in .vid-card:nth-child(3){animation-delay:.23s;}
+  .vid-grid.rv.in .vid-card:nth-child(4){animation-delay:.32s;}
+  .vid-grid.rv.in .vid-card:nth-child(5){animation-delay:.41s;}
+  @keyframes vidPop{from{opacity:0;transform:translateY(18px) scale(.94);}to{opacity:1;transform:none;}}
+  .vid-wrap{position:relative;width:100%;aspect-ratio:9/16;background:#0b0d10;}
+  .vid-el{width:100%;height:100%;object-fit:cover;display:block;background:#0b0d10;}
+  .vid-play{position:absolute;inset:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(11,13,16,.25);transition:opacity .25s;}
+  .vid-play svg{width:56px;height:56px;color:var(--heat);filter:drop-shadow(0 4px 14px rgba(0,0,0,.6));transition:transform .25s;}
+  .vid-card:hover .vid-play svg{transform:scale(1.1);}
+  .vid-play.hide{opacity:0;pointer-events:none;}
+  .vid-hint{margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#5c6673;display:flex;align-items:center;gap:7px;}
+  .vid-hint svg{width:13px;height:13px;color:var(--heat);}
+  footer{padding:34px 0;border-top:1px solid var(--line-soft);}
+  .ft{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .ft p{color:#5c6673;font-size:.88rem;}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="spotlight" id="spotlight"></div>
+<div class="grain"></div>
+<nav class="side-dots" aria-label="Navigation rapide">
+  <a href="#pourquoi" class="dot" data-label="Pourquoi nous"></a>
+  <a href="#garantie" class="dot" data-label="Garantie"></a>
+  <a href="#estimation" class="dot" data-label="Estimation"></a>
+  <a href="#services" class="dot" data-label="Services"></a>
+  <a href="#comment" class="dot" data-label="Déroulement"></a>
+  <a href="#zone" class="dot" data-label="Zone"></a>
+  <a href="#contact" class="dot" data-label="Contact"></a>
+</nav>
+<a class="mobile-call" href="tel:4387784338">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="17" height="17"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <span data-i18n="mobile.call">Appeler maintenant</span>
+</a>
+
+<header>
+  <div class="nav">
+    <div class="logo"><span class="logo-mark"></span>Review <em>Direct</em></div>
+    <nav class="nav-links">
+      <a href="#estimation" data-i18n="nav.estimation">Estimation</a><a href="#services" data-i18n="nav.services">Services</a><a href="#garantie" data-i18n="nav.warranty">Garantie</a><a href="#zone" data-i18n="nav.zone">Zone</a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Langue / Language / Idioma">
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+    <a class="nav-call" href="tel:4387784338">438 778 4338</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-wheel" id="heroWheel" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <circle class="hw-tire" cx="100" cy="100" r="92"/>
+        <circle class="hw-rim" cx="100" cy="100" r="70"/>
+        <g class="hw-spin">
+          <circle class="hw-rotor" cx="100" cy="100" r="52"/>
+          <circle class="hw-hub" cx="100" cy="100" r="16"/>
+          <g class="hw-spokes">
+            <line x1="100" y1="52" x2="100" y2="68"/>
+            <line x1="100" y1="132" x2="100" y2="148"/>
+            <line x1="52" y1="100" x2="68" y2="100"/>
+            <line x1="132" y1="100" x2="148" y2="100"/>
+            <line x1="65.8" y1="65.8" x2="77.2" y2="77.2"/>
+            <line x1="122.8" y1="122.8" x2="134.2" y2="134.2"/>
+            <line x1="65.8" y1="134.2" x2="77.2" y2="122.8"/>
+            <line x1="122.8" y1="77.2" x2="134.2" y2="65.8"/>
+          </g>
+        </g>
+        <path class="hw-caliper" d="M84 30h32a10 10 0 0 1 10 10v18a10 10 0 0 1-10 10H84a10 10 0 0 1-10-10V40a10 10 0 0 1 10-10z"/>
+        <circle class="hw-flash" cx="100" cy="100" r="60"/>
+      </svg>
+    </div>
+    <div class="hero-top">
+      <span class="tag rv" data-i18n="hero.tag">Service mobile · Laval · Montréal · Terrebonne</span>
+      <h1 class="rv" data-i18n-html="hero.h1">Vos freins.<br><span class="out">Changés chez vous.</span></h1>
+      <p class="sub rv" data-i18n="hero.sub">Nous nous déplaçons avec l'équipement complet : freins et changement d'huile effectués dans votre entrée, votre stationnement ou à votre lieu de travail. Aucun rendez-vous qui s'éternise, aucune journée perdue en salle d'attente : nous confirmons le prix avant de commencer, nous effectuons le travail devant vous, et vous repartez avec une garantie écrite. Vous ne vous déplacez pas.</p>
+    </div>
+    <div class="trust-row rv">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div><strong data-i18n="trust.warranty.title">3 mois / 5000 km</strong><span data-i18n="trust.warranty.sub">Garantie sur les pièces et la main-d'œuvre</span></div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+        <div><strong data-i18n="trust.price.title">Prix confirmé</strong><span data-i18n="trust.price.sub">Avant que nous touchions à votre véhicule</span></div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-7.58 7-13a7 7 0 1 0-14 0c0 5.42 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div><strong data-i18n="trust.mobile.title">Nous venons à vous</strong><span data-i18n="trust.mobile.sub">Domicile, travail, stationnement</span></div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <div><strong data-i18n="trust.honest.title">Inspection transparente</strong><span data-i18n="trust.honest.sub">Nous vous avisons si une pièce n'a pas besoin d'être remplacée</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="marquee"><div class="marquee-track" id="mq"></div></div>
+</section>
+
+<section class="blk cmp" id="pourquoi">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" data-i18n="cmp.tag">Pourquoi pas le garage</span>
+      <h2 data-i18n-html="cmp.h2">Rendez-vous à 11 h.<br>Travail commencé à 13 h. Ça vous dit quelque chose?</h2>
+      <p data-i18n="cmp.intro">Vous prenez congé, vous vous déplacez, puis vous attendez dans une salle d'attente, pendant que votre véhicule patiente dans la cour du garage. Nous faisons les choses autrement : nous venons à vous, à l'heure convenue.</p>
+    </div>
+    <div class="cmp-grid">
+      <div class="cmp-col bad rv">
+        <div class="cmp-h bad"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg></i><span data-i18n="cmp.bad.title">Le garage traditionnel</span></div>
+        <ul class="cmp-list bad">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg><span data-i18n="cmp.bad.1">Vous devez prendre congé ou réorganiser votre journée</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg><span data-i18n="cmp.bad.2">Rendez-vous fixé à une heure, travail débuté... quand le garage est prêt</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg><span data-i18n="cmp.bad.3">Salle d'attente, ou il faut trouver un moyen de transport</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg><span data-i18n="cmp.bad.4">Votre véhicule disparaît pour toute la journée</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg><span data-i18n="cmp.bad.5">Dépôt du véhicule, attente d'un appel, puis retour le chercher</span></li>
+        </ul>
+      </div>
+      <div class="cmp-col good rv">
+        <div class="cmp-h good"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></i>Review Direct</div>
+        <ul class="cmp-list good">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="cmp.good.1">Nous arrivons chez vous, au travail, ou là où votre véhicule est stationné</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="cmp.good.2">L'heure convenue est l'heure à laquelle nous travaillons</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="cmp.good.3">Vous poursuivez votre journée normalement</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="cmp.good.4">Votre véhicule ne quitte pas votre entrée</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="cmp.good.5">Un appel, un prix confirmé, c'est réglé</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk war" id="garantie">
+  <div class="wrap war-in">
+    <div class="rv">
+      <span class="tag" data-i18n="war.tag">Garantie</span>
+      <h2 style="font-size:clamp(1.9rem,4.4vw,3rem);margin:14px 0 0;" data-i18n-html="war.h2">Nous restons derrière<br>notre travail.</h2>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n-html="war.li1">Pièces <strong>et</strong> main-d'œuvre couvertes</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="war.li2">Un problème avec le travail effectué? Nous revenons le corriger.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="war.li3">Prix confirmé à l'avance, aucune surprise sur la facture</span></li>
+      </ul>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><div class="n">3</div><div class="l" data-i18n="war.stat1">Mois</div></div>
+      <div class="stat"><div class="n">5000</div><div class="l" data-i18n="war.stat2">Kilomètres</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="config" id="estimation">
+  <div class="wrap">
+    <div class="config-shell rv">
+      <div class="config-bar">
+        <span data-i18n="config.title">Configurateur d'estimation en direct</span>
+        <span class="live"><span class="live-dot"></span><span data-i18n="config.online">En ligne</span></span>
+      </div>
+      <div class="config-body">
+
+        <div class="stage" id="stage">
+          <div class="scanline" id="scanline"></div>
+          <div class="stage-empty">
+            <div class="ghost-wrap">
+              <svg class="ghost-car" viewBox="0 0 460 215" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 156 L82 156 A30 30 0 0 1 142 156 L300 156 A30 30 0 0 1 360 156 L418 156 L418 126 Q418 112 400 108 L344 96 L300 56 Q290 46 266 46 L176 46 Q152 46 142 56 L100 92 L40 106 Q22 110 22 126 Z"/>
+                <circle cx="112" cy="152" r="26"/><circle cx="330" cy="152" r="26"/>
+              </svg>
+              <span class="ghost-corner tl"></span><span class="ghost-corner tr"></span>
+              <span class="ghost-corner bl"></span><span class="ghost-corner br"></span>
+              <span class="ghost-scan"></span>
+            </div>
+            <svg class="hint-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-3l2-5h14l2 5v3a2 2 0 0 1-2 2M5 17v2M19 17v2"/><circle cx="7.5" cy="14" r="1"/><circle cx="16.5" cy="14" r="1"/></svg>
+            <span data-i18n-html="stage.hint">Recherchez votre marque<br>puis sélectionnez votre modèle</span>
+          </div>
+          <div class="car-holder">
+            <div class="car-photo" id="carPhoto"><img id="carImg" alt=""></div>
+            <svg class="car-svg" id="carSvg" viewBox="0 0 460 215" xmlns="http://www.w3.org/2000/svg"></svg>
+            <div class="rotor-row" id="rotorRow">
+              <div class="rcell" id="rcF">
+                <svg viewBox="0 0 44 44" fill="none" stroke="currentColor"><circle cx="22" cy="22" r="17" stroke-width="2.4"/><circle cx="22" cy="22" r="6" stroke-width="1.6" opacity=".7"/><path d="M22 5v10M22 29v10M5 22h10M29 22h10M10 10l7 7M27 27l7 7M34 10l-7 7M17 27l-7 7" stroke-width="1.3" opacity=".6"/></svg>
+                <div><div class="rlbl" data-i18n="rotor.front">Essieu avant</div><div class="rst" id="stF" data-i18n="rotor.included">Inclus</div></div>
+              </div>
+              <div class="rcell" id="rcR">
+                <svg viewBox="0 0 44 44" fill="none" stroke="currentColor"><circle cx="22" cy="22" r="17" stroke-width="2.4"/><circle cx="22" cy="22" r="6" stroke-width="1.6" opacity=".7"/><path d="M22 5v10M22 29v10M5 22h10M29 22h10M10 10l7 7M27 27l7 7M34 10l-7 7M17 27l-7 7" stroke-width="1.3" opacity=".6"/></svg>
+                <div><div class="rlbl" data-i18n="rotor.rear">Essieu arrière</div><div class="rst" id="stR">Non inclus</div></div>
+              </div>
+            </div>
+            <div class="car-cap">
+              <div class="nm" id="carNm">—</div>
+              <div class="meta" id="carMeta" data-i18n="car.waiting">En attente</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+
+          <div class="field" id="f1">
+            <div class="field-label"><i>1</i> <span data-i18n="field.brand">Marque</span></div>
+            <div class="combo" id="cbBrand">
+              <div class="combo-field">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input id="brandInput" placeholder="Recherchez votre marque…" data-i18n-placeholder="search.placeholder" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="brandList">
+                <button class="combo-clear" id="brandClear" aria-label="Effacer la marque" data-i18n-aria="search.clearAria">✕</button>
+              </div>
+              <div class="combo-list" id="brandList" role="listbox"></div>
+            </div>
+          </div>
+
+          <div class="mgrid-shell" id="mgridShell">
+            <div class="field" id="f2">
+              <div class="field-label"><i>2</i> <span data-i18n="field.model">Modèle</span> <button class="chg" id="clearModel" data-i18n="field.change">Modifier</button></div>
+              <div class="mgrid" id="mgrid"></div>
+            </div>
+          </div>
+
+          <div class="field" id="f3">
+            <div class="field-label"><i>3</i> <span data-i18n="field.year">Année</span></div>
+            <div class="yr-head"><span class="price-lbl" data-i18n="field.yearOfVehicle">Année du véhicule</span><span class="yr-val" id="yrVal">2019</span></div>
+            <input class="yr-range" type="range" min="2000" max="2026" value="2019" id="yr">
+            <div class="yr-bounds" id="yrBounds">2000 – 2026</div>
+          </div>
+
+          <div class="field" id="f4">
+            <div class="field-label"><i>4</i> <span data-i18n="field.city">Ville</span></div>
+            <select class="field-select" id="citySelect">
+              <option value="Laval">Laval</option>
+              <option value="Beaconsfield">Beaconsfield</option>
+              <option value="Blainville">Blainville</option>
+              <option value="Boisbriand">Boisbriand</option>
+              <option value="Boucherville">Boucherville</option>
+              <option value="Brossard">Brossard</option>
+              <option value="Chambly">Chambly</option>
+              <option value="Châteauguay">Châteauguay</option>
+              <option value="Deux-Montagnes">Deux-Montagnes</option>
+              <option value="Dollard-des-Ormeaux">Dollard-des-Ormeaux</option>
+              <option value="La Prairie">La Prairie</option>
+              <option value="Longueuil">Longueuil</option>
+              <option value="Mascouche">Mascouche</option>
+              <option value="Mirabel">Mirabel</option>
+              <option value="Montréal">Montréal</option>
+              <option value="Napierville">Napierville</option>
+              <option value="Repentigny">Repentigny</option>
+              <option value="Rosemère">Rosemère</option>
+              <option value="Saint-Amable">Saint-Amable</option>
+              <option value="Sainte-Anne-des-Plaines">Sainte-Anne-des-Plaines</option>
+              <option value="Saint-Bruno-de-Montarville">Saint-Bruno-de-Montarville</option>
+              <option value="Saint-Eustache">Saint-Eustache</option>
+              <option value="Saint-Hubert">Saint-Hubert</option>
+              <option value="Saint-Jean-sur-Richelieu">Saint-Jean-sur-Richelieu</option>
+              <option value="Saint-Jérôme">Saint-Jérôme</option>
+              <option value="Saint-Rémi">Saint-Rémi</option>
+              <option value="Sainte-Thérèse">Sainte-Thérèse</option>
+              <option value="Terrebonne">Terrebonne</option>
+              <option value="Varennes">Varennes</option>
+              <option value="Vaudreuil-Dorion">Vaudreuil-Dorion</option>
+            </select>
+          </div>
+
+          <div class="field" id="f5">
+            <div class="field-label"><i>5</i> <span data-i18n="field.axles">Essieux</span></div>
+            <div class="seg" id="segAxle">
+              <span class="seg-pill" id="pillAxle"></span>
+              <button class="seg-opt on" data-axle="2"><span data-i18n="axle.front">Avant</span><small data-i18n="axle.front2">2 freins</small></button>
+              <button class="seg-opt" data-axle="4"><span data-i18n="axle.both">Avant + arrière</span><small data-i18n="axle.both4">4 freins</small></button>
+            </div>
+            <p class="awd-hint" id="awdHint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+              <span data-i18n="axle.awdHint">Recommandé : les VUS et véhicules à traction intégrale profitent à faire les 4 freins ensemble.</span>
+            </p>
+          </div>
+
+          <div class="addon" id="addonOil" role="button" tabindex="0">
+            <div class="addon-l">
+              <span class="addon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2.5s6.2 7.2 6.2 12a6.2 6.2 0 0 1-12.4 0c0-4.8 6.2-12 6.2-12z"/></svg>
+              <span data-i18n="addon.label">Ajouter le changement d'huile</span>
+            </div>
+            <span class="addon-p" data-i18n="addon.price">+ 79 $</span>
+          </div>
+
+          <div class="price-box" id="priceBox">
+            <div class="price-row">
+              <span class="price-lbl" data-i18n="price.estimate">Estimation</span>
+              <span class="price-amt"><span class="cur">$</span><span id="price">0</span></span>
+            </div>
+            <p class="price-note" data-i18n="price.note">Prix indicatif, pièces et main-d'œuvre incluses. Le montant final est confirmé avant le début des travaux.</p>
+            <a class="cta" href="#bookForm" id="priceBookBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="17" height="17"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m9 16 2 2 4-4"/></svg>
+              <span data-i18n="price.cta">Réserver ce forfait</span>
+            </a>
+            <a class="cta-alt" href="tel:4387784338" data-i18n="price.callInstead">Ou appelez-nous directement</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk svc" id="services">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" data-i18n="svc.tag">Services</span>
+      <h2 data-i18n="svc.h2">Deux services. Zéro garage.</h2>
+      <p data-i18n="svc.desc">Les deux entretiens les plus fréquents, effectués là où votre véhicule est déjà stationné.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card rv">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.4M12 17.6V21M21 12h-3.4M6.4 12H3M18.4 5.6l-2.4 2.4M8 16l-2.4 2.4M18.4 18.4 16 16M8 8 5.6 5.6"/></svg></div>
+        <h3 data-i18n="svc.brakes.title">Changement de freins</h3>
+        <p data-i18n="svc.brakes.desc">Plaquettes et disques, à l'avant ou à l'arrière. Nous inspectons le système au complet avant d'intervenir. Si une pièce n'a pas besoin d'être remplacée, nous vous le disons.</p>
+        <div class="pills"><span class="pill" data-i18n="svc.brakes.pill1">Plaquettes</span><span class="pill" data-i18n="svc.brakes.pill2">Disques</span><span class="pill" data-i18n="svc.brakes.pill3">Inspection incluse</span></div>
+      </div>
+      <div class="svc-card rv">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2.5s6.2 7.2 6.2 12a6.2 6.2 0 0 1-12.4 0c0-4.8 6.2-12 6.2-12z"/><path d="M9.4 14.6a2.6 2.6 0 0 0 2.6 2.6"/></svg></div>
+        <h3 data-i18n="svc.oil.title">Changement d'huile</h3>
+        <p data-i18n="svc.oil.desc">Huile et filtre remplacés en moins de 30 minutes. Nous utilisons le grade recommandé pour votre véhicule, jamais une huile générique bon marché.</p>
+        <div class="pills"><span class="pill" data-i18n="svc.oil.pill1">Huile et filtre</span><span class="pill" data-i18n="svc.oil.pill2">30 minutes</span><span class="pill" data-i18n="svc.oil.pill3">Sur place</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="comment">
+  <div class="wrap">
+    <div class="head rv"><span class="tag" data-i18n="steps.tag">Déroulement</span><h2 data-i18n="steps.h2">Comment ça fonctionne</h2></div>
+    <div class="steps">
+      <div class="step-c rv"><div class="step-n" data-i18n="step1.n">Étape 01</div><h3 data-i18n="step1.title">Vous appelez</h3><p data-i18n="step1.desc">Indiquez-nous votre véhicule et vos disponibilités. Ça prend deux minutes.</p></div>
+      <div class="step-c rv"><div class="step-n" data-i18n="step2.n">Étape 02</div><h3 data-i18n="step2.title">Nous confirmons</h3><p data-i18n="step2.desc">Heure fixée, prix confirmé. Vous savez exactement ce que vous payez avant notre arrivée.</p></div>
+      <div class="step-c rv"><div class="step-n" data-i18n="step3.n">Étape 03</div><h3 data-i18n="step3.title">Nous nous déplaçons</h3><p data-i18n="step3.desc">Domicile, travail, stationnement : nous arrivons avec tout l'équipement nécessaire.</p></div>
+      <div class="step-c rv"><div class="step-n" data-i18n="step4.n">Étape 04</div><h3 data-i18n="step4.title">C'est réglé</h3><p data-i18n="step4.desc">Freins neufs, garantie active, et vous n'avez pas quitté votre entrée.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="zone">
+  <div class="wrap zone-in">
+    <div class="radar rv">
+      <div class="radar-ring" style="width:32%;height:32%;"></div>
+      <div class="radar-ring" style="width:64%;height:64%;"></div>
+      <div class="radar-ring" style="width:96%;height:96%;"></div>
+      <div class="radar-sweep"></div><div class="radar-hub"></div>
+      <div class="blip" data-city="Laval" style="top:36%;left:47%;--pd:0s;"></div>
+      <div class="blip" data-city="Montréal" style="top:62%;left:41%;--pd:.6s;"></div>
+      <div class="blip" data-city="Terrebonne" style="top:28%;left:66%;--pd:1.2s;"></div>
+      <div class="blip" data-city="Boisbriand" style="top:40%;left:32%;--pd:1.8s;"></div>
+      <div class="blip" data-city="Longueuil" style="top:74%;left:40%;--pd:2.1s;"></div>
+      <div class="blip" data-city="Brossard" style="top:87%;left:27%;--pd:2.4s;"></div>
+    </div>
+    <div class="rv">
+      <span class="tag" data-i18n="zone.tag">Zone desservie</span>
+      <h2 style="font-size:clamp(1.9rem,4.4vw,3rem);margin:14px 0;" data-i18n-html="zone.h2">Nous nous déplaçons<br>partout autour de vous.</h2>
+      <p style="color:var(--dust);" data-i18n="zone.p1">Basés à Laval, nous couvrons toute la grande région : Rive-Nord, Rive-Sud, Laurentides, Montérégie.</p>
+      <div class="zchips">
+        <span class="zchip key">Laval</span><span class="zchip key">Montréal</span><span class="zchip key">Terrebonne</span>
+      </div>
+      <div class="zchips zchips-more" id="zchipsMore">
+        <span class="zchip">Longueuil</span><span class="zchip">Brossard</span><span class="zchip">Boucherville</span><span class="zchip">Saint-Hubert</span><span class="zchip">Saint-Bruno-de-Montarville</span>
+        <span class="zchip">Repentigny</span><span class="zchip">Mascouche</span><span class="zchip">Blainville</span><span class="zchip">Boisbriand</span><span class="zchip">Sainte-Thérèse</span><span class="zchip">Rosemère</span>
+        <span class="zchip">Saint-Eustache</span><span class="zchip">Deux-Montagnes</span><span class="zchip">Dollard-des-Ormeaux</span><span class="zchip">Beaconsfield</span>
+        <span class="zchip">Saint-Jérôme</span><span class="zchip">Mirabel</span><span class="zchip">Sainte-Anne-des-Plaines</span>
+        <span class="zchip">Varennes</span><span class="zchip">Saint-Amable</span><span class="zchip">Chambly</span>
+        <span class="zchip">La Prairie</span><span class="zchip">Châteauguay</span><span class="zchip">Vaudreuil-Dorion</span>
+        <span class="zchip">Saint-Jean-sur-Richelieu</span><span class="zchip">Napierville</span><span class="zchip">Saint-Rémi</span>
+      </div>
+      <button type="button" class="zchips-toggle" id="zchipsToggle" aria-expanded="false" aria-controls="zchipsMore">
+        <span id="zchipsToggleLabel">+ 27 autres villes</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <p style="color:#5c6673;margin-top:18px;font-size:.86rem;" data-i18n="zone.p2">Votre ville n'est pas dans la liste? Appelez-nous quand même, nous desservons souvent les environs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="videos">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag" data-i18n="vid.tag">En action</span>
+      <h2 data-i18n="vid.h2">Nous, au travail, chez nos clients.</h2>
+      <p data-i18n="vid.desc">Des vraies interventions, filmées sur place.</p>
+    </div>
+    <div class="vid-grid rv">
+      <div class="vid-card">
+        <div class="vid-wrap">
+          <video class="vid-el" preload="metadata" controls playsinline><source src="videos/video1.mp4" type="video/mp4"></video>
+          <button class="vid-play" aria-label="Lire la vidéo" data-i18n-aria="vid.play"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="rgba(11,13,16,.55)" stroke="currentColor" stroke-width="1.4"/><path d="M10 8.5v7l6-3.5z"/></svg></button>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-wrap">
+          <video class="vid-el" preload="metadata" controls playsinline><source src="videos/video2.mp4" type="video/mp4"></video>
+          <button class="vid-play" aria-label="Lire la vidéo" data-i18n-aria="vid.play"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="rgba(11,13,16,.55)" stroke="currentColor" stroke-width="1.4"/><path d="M10 8.5v7l6-3.5z"/></svg></button>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-wrap">
+          <video class="vid-el" preload="metadata" controls playsinline><source src="videos/video3.mp4" type="video/mp4"></video>
+          <button class="vid-play" aria-label="Lire la vidéo" data-i18n-aria="vid.play"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="rgba(11,13,16,.55)" stroke="currentColor" stroke-width="1.4"/><path d="M10 8.5v7l6-3.5z"/></svg></button>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-wrap">
+          <video class="vid-el" preload="metadata" controls playsinline><source src="videos/video4.mp4" type="video/mp4"></video>
+          <button class="vid-play" aria-label="Lire la vidéo" data-i18n-aria="vid.play"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="rgba(11,13,16,.55)" stroke="currentColor" stroke-width="1.4"/><path d="M10 8.5v7l6-3.5z"/></svg></button>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-wrap">
+          <video class="vid-el" preload="metadata" controls playsinline><source src="videos/video5.mp4" type="video/mp4"></video>
+          <button class="vid-play" aria-label="Lire la vidéo" data-i18n-aria="vid.play"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="rgba(11,13,16,.55)" stroke="currentColor" stroke-width="1.4"/><path d="M10 8.5v7l6-3.5z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <p class="vid-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4"/></svg><span data-i18n="vid.hint">Glissez pour voir plus</span></p>
+  </div>
+</section>
+
+<section class="blk ctc" id="contact">
+  <div class="wrap">
+    <span class="tag rv" style="justify-content:center;" data-i18n="contact.tag">Contact</span>
+    <h2 class="rv" style="margin-top:16px;" data-i18n-html="contact.h2">Un appel<br>et tout est réglé.</h2>
+    <p class="sub rv" data-i18n="contact.p">Indiquez-nous votre véhicule et vos disponibilités. Nous nous occupons du reste.</p>
+    <div class="phones rv">
+      <a class="ph" href="tel:4387784338"><span class="t"><span class="ph-dot"></span><span data-i18n="contact.line1">Ligne principale</span></span><span class="n">438 778 4338</span></a>
+      <a class="ph" href="tel:4389283471"><span class="t"><span class="ph-dot"></span><span data-i18n="contact.line2">Ligne secondaire</span></span><span class="n">438 928 3471</span></a>
+    </div>
+
+    <form class="book-form rv" id="bookForm" novalidate>
+      <p class="bf-lead" data-i18n="book.lead">Ou réservez directement en ligne — nous confirmons par téléphone.</p>
+      <div class="bf-row">
+        <div class="bf-field">
+          <label for="bfName" data-i18n="book.name">Nom complet</label>
+          <input type="text" id="bfName" name="name" required autocomplete="name">
+        </div>
+        <div class="bf-field">
+          <label for="bfPhone" data-i18n="book.phone">Téléphone</label>
+          <input type="tel" id="bfPhone" name="phone" required autocomplete="tel">
+        </div>
+      </div>
+      <div class="bf-row">
+        <div class="bf-field">
+          <label for="bfEmail" data-i18n="book.email">Courriel</label>
+          <input type="email" id="bfEmail" name="email" required autocomplete="email">
+        </div>
+        <div class="bf-field">
+          <label for="bfCity" data-i18n="book.city">Ville</label>
+          <input type="text" id="bfCity" name="city" required autocomplete="address-level2">
+        </div>
+      </div>
+      <div class="bf-row">
+        <div class="bf-field">
+          <label for="bfDate" data-i18n="book.date">Date souhaitée</label>
+          <input type="date" id="bfDate" name="date" required>
+        </div>
+        <div class="bf-field">
+          <label for="bfTime" data-i18n="book.time">Heure souhaitée</label>
+          <input type="time" id="bfTime" name="time" required>
+        </div>
+      </div>
+      <div class="bf-field bf-full">
+        <label for="bfVehicle" data-i18n="book.vehicle">Véhicule</label>
+        <input type="text" id="bfVehicle" name="vehicle" data-i18n-placeholder="book.vehiclePh" placeholder="Ex : Honda Civic 2019">
+      </div>
+      <div class="bf-field bf-full">
+        <label for="bfNotes" data-i18n="book.notes">Notes (optionnel)</label>
+        <textarea id="bfNotes" name="notes" rows="3"></textarea>
+      </div>
+      <button type="submit" class="bf-submit" id="bfSubmit"><span data-i18n="book.submit">Réserver mon rendez-vous</span></button>
+      <p class="bf-status" id="bfStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap ft">
+    <div class="logo" style="font-size:1.05rem;"><span class="logo-mark" style="width:20px;height:20px;border-width:2px;"></span>Review <em>Direct</em></div>
+    <p data-i18n="footer.p">Freins et changement d'huile à domicile : Laval, Montréal, Terrebonne et environs.</p>
+  </div>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+
+/* ============ i18n ============ */
+const I18N={
+ fr:{
+  "nav.estimation":"Estimation","nav.services":"Services","nav.warranty":"Garantie","nav.zone":"Zone",
+  "mobile.call":"Appeler maintenant",
+  "hero.tag":"Service mobile · Laval · Montréal · Terrebonne",
+  "hero.h1":"Vos freins.<br><span class=\"out\">Changés chez vous.</span>",
+  "hero.sub":"Nous nous déplaçons avec l'équipement complet : freins et changement d'huile effectués dans votre entrée, votre stationnement ou à votre lieu de travail. Aucun rendez-vous qui s'éternise, aucune journée perdue en salle d'attente : nous confirmons le prix avant de commencer, nous effectuons le travail devant vous, et vous repartez avec une garantie écrite. Vous ne vous déplacez pas.",
+  "trust.warranty.title":"3 mois / 5000 km","trust.warranty.sub":"Garantie sur les pièces et la main-d'œuvre",
+  "trust.price.title":"Prix confirmé","trust.price.sub":"Avant que nous touchions à votre véhicule",
+  "trust.mobile.title":"Nous venons à vous","trust.mobile.sub":"Domicile, travail, stationnement",
+  "trust.honest.title":"Inspection transparente","trust.honest.sub":"Nous vous avisons si une pièce n'a pas besoin d'être remplacée",
+  "config.title":"Configurateur d'estimation en direct","config.online":"En ligne",
+  "stage.hint":"Recherchez votre marque<br>puis sélectionnez votre modèle",
+  "rotor.front":"Essieu avant","rotor.rear":"Essieu arrière","rotor.included":"Inclus","rotor.notIncluded":"Non inclus",
+  "car.waiting":"En attente",
+  "field.brand":"Marque","field.model":"Modèle","field.change":"Modifier","field.year":"Année","field.yearOfVehicle":"Année du véhicule","field.city":"Ville","field.axles":"Essieux",
+  "axle.awdHint":"Recommandé : les VUS et véhicules à traction intégrale profitent à faire les 4 freins ensemble.",
+  "search.placeholder":"Recherchez votre marque…","search.clearAria":"Effacer la marque",
+  "search.noResults":"Aucun résultat. Communiquez avec nous, nous couvrons toute la région.","search.modelsCount":"modèles",
+  "axle.front":"Avant","axle.front2":"2 freins","axle.both":"Avant + arrière","axle.both4":"4 freins",
+  "axle.svgFront":"AVANT","axle.svgRear":"ARRIÈRE",
+  "addon.label":"Ajouter le changement d'huile","addon.price":"+ 79 $","oil.included":"Changement d'huile inclus",
+  "price.estimate":"Estimation","price.note":"Prix indicatif, pièces et main-d'œuvre incluses. Le montant final est confirmé avant le début des travaux.","price.cta":"Réserver ce forfait",
+  "price.callInstead":"Ou appelez-nous directement",
+  "svc.tag":"Services","svc.h2":"Deux services. Zéro garage.","svc.desc":"Les deux entretiens les plus fréquents, effectués là où votre véhicule est déjà stationné.",
+  "svc.brakes.title":"Changement de freins","svc.brakes.desc":"Plaquettes et disques, à l'avant ou à l'arrière. Nous inspectons le système au complet avant d'intervenir. Si une pièce n'a pas besoin d'être remplacée, nous vous le disons.",
+  "svc.brakes.pill1":"Plaquettes","svc.brakes.pill2":"Disques","svc.brakes.pill3":"Inspection incluse",
+  "svc.oil.title":"Changement d'huile","svc.oil.desc":"Huile et filtre remplacés en moins de 30 minutes. Nous utilisons le grade recommandé pour votre véhicule, jamais une huile générique bon marché.",
+  "svc.oil.pill1":"Huile et filtre","svc.oil.pill2":"30 minutes","svc.oil.pill3":"Sur place",
+  "cmp.tag":"Pourquoi pas le garage","cmp.h2":"Rendez-vous à 11 h.<br>Travail commencé à 13 h. Ça vous dit quelque chose?",
+  "cmp.intro":"Vous prenez congé, vous vous déplacez, puis vous attendez dans une salle d'attente, pendant que votre véhicule patiente dans la cour du garage. Nous faisons les choses autrement : nous venons à vous, à l'heure convenue.",
+  "cmp.bad.title":"Le garage traditionnel",
+  "cmp.bad.1":"Vous devez prendre congé ou réorganiser votre journée",
+  "cmp.bad.2":"Rendez-vous fixé à une heure, travail débuté... quand le garage est prêt",
+  "cmp.bad.3":"Salle d'attente, ou il faut trouver un moyen de transport",
+  "cmp.bad.4":"Votre véhicule disparaît pour toute la journée",
+  "cmp.bad.5":"Dépôt du véhicule, attente d'un appel, puis retour le chercher",
+  "cmp.good.1":"Nous arrivons chez vous, au travail, ou là où votre véhicule est stationné",
+  "cmp.good.2":"L'heure convenue est l'heure à laquelle nous travaillons",
+  "cmp.good.3":"Vous poursuivez votre journée normalement",
+  "cmp.good.4":"Votre véhicule ne quitte pas votre entrée",
+  "cmp.good.5":"Un appel, un prix confirmé, c'est réglé",
+  "steps.tag":"Déroulement","steps.h2":"Comment ça fonctionne",
+  "step1.n":"Étape 01","step1.title":"Vous appelez","step1.desc":"Indiquez-nous votre véhicule et vos disponibilités. Ça prend deux minutes.",
+  "step2.n":"Étape 02","step2.title":"Nous confirmons","step2.desc":"Heure fixée, prix confirmé. Vous savez exactement ce que vous payez avant notre arrivée.",
+  "step3.n":"Étape 03","step3.title":"Nous nous déplaçons","step3.desc":"Domicile, travail, stationnement : nous arrivons avec tout l'équipement nécessaire.",
+  "step4.n":"Étape 04","step4.title":"C'est réglé","step4.desc":"Freins neufs, garantie active, et vous n'avez pas quitté votre entrée.",
+  "war.tag":"Garantie","war.h2":"Nous restons derrière<br>notre travail.",
+  "war.li1":"Pièces <strong>et</strong> main-d'œuvre couvertes",
+  "war.li2":"Un problème avec le travail effectué? Nous revenons le corriger.",
+  "war.li3":"Prix confirmé à l'avance, aucune surprise sur la facture",
+  "war.stat1":"Mois","war.stat2":"Kilomètres",
+  "zone.tag":"Zone desservie","zone.h2":"Nous nous déplaçons<br>partout autour de vous.",
+  "zone.showMore":"+ 27 autres villes","zone.showLess":"Afficher moins",
+  "zone.p1":"Basés à Laval, nous couvrons toute la grande région : Rive-Nord, Rive-Sud, Laurentides, Montérégie.",
+  "zone.p2":"Votre ville n'est pas dans la liste? Appelez-nous quand même, nous desservons souvent les environs.",
+  "contact.tag":"Contact","contact.h2":"Un appel<br>et tout est réglé.","contact.p":"Indiquez-nous votre véhicule et vos disponibilités. Nous nous occupons du reste.",
+  "contact.line1":"Ligne principale","contact.line2":"Ligne secondaire",
+  "book.lead":"Ou réservez directement en ligne — nous confirmons par téléphone.",
+  "book.name":"Nom complet","book.phone":"Téléphone","book.email":"Courriel","book.city":"Ville",
+  "book.date":"Date souhaitée","book.time":"Heure souhaitée","book.vehicle":"Véhicule","book.vehiclePh":"Ex : Honda Civic 2019",
+  "book.notes":"Notes (optionnel)","book.submit":"Réserver mon rendez-vous",
+  "book.sending":"Envoi en cours…","book.success":"Merci! Votre demande a été reçue, nous vous confirmons sous peu.",
+  "book.error":"Erreur d'envoi. Appelez-nous directement, ou réessayez.","book.notReady":"Réservation en ligne bientôt disponible — appelez-nous en attendant.",
+  "footer.p":"Freins et changement d'huile à domicile : Laval, Montréal, Terrebonne et environs.",
+  "vid.tag":"En action","vid.h2":"Nous, au travail, chez nos clients.","vid.desc":"Des vraies interventions, filmées sur place.","vid.play":"Lire la vidéo","vid.hint":"Glissez pour voir plus",
+  "misc.otherBrand":"Autre marque",
+  "sidedot.estimation":"Estimation","sidedot.services":"Services","sidedot.process":"Déroulement","sidedot.warranty":"Garantie","sidedot.zone":"Zone","sidedot.contact":"Contact"
+ },
+ en:{
+  "nav.estimation":"Estimate","nav.services":"Services","nav.warranty":"Warranty","nav.zone":"Area",
+  "mobile.call":"Call now",
+  "hero.tag":"Mobile service · Laval · Montreal · Terrebonne",
+  "hero.h1":"Your brakes.<br><span class=\"out\">Changed at home.</span>",
+  "hero.sub":"We travel with the full equipment: brakes and oil changes done in your driveway, your parking spot, or at your workplace. No appointment that drags on, no day lost in a waiting room: we confirm the price before we start, we do the work in front of you, and you leave with a written warranty. You don't go anywhere.",
+  "trust.warranty.title":"3 months / 5,000 km","trust.warranty.sub":"Warranty on parts and labour",
+  "trust.price.title":"Confirmed price","trust.price.sub":"Before we touch your vehicle",
+  "trust.mobile.title":"We come to you","trust.mobile.sub":"Home, work, parking lot",
+  "trust.honest.title":"Honest inspection","trust.honest.sub":"We tell you if a part doesn't need replacing",
+  "config.title":"Live Estimate Configurator","config.online":"Online",
+  "stage.hint":"Search for your make<br>then select your model",
+  "rotor.front":"Front axle","rotor.rear":"Rear axle","rotor.included":"Included","rotor.notIncluded":"Not included",
+  "car.waiting":"Awaiting selection",
+  "field.brand":"Make","field.model":"Model","field.change":"Change","field.year":"Year","field.yearOfVehicle":"Vehicle year","field.city":"City","field.axles":"Axles",
+  "axle.awdHint":"Recommended: SUVs and all-wheel-drive vehicles benefit from doing all 4 brakes together.",
+  "search.placeholder":"Search for your make…","search.clearAria":"Clear brand",
+  "search.noResults":"No results. Contact us, we cover the whole area.","search.modelsCount":"models",
+  "axle.front":"Front","axle.front2":"2 brakes","axle.both":"Front + rear","axle.both4":"4 brakes",
+  "axle.svgFront":"FRONT","axle.svgRear":"REAR",
+  "addon.label":"Add an oil change","addon.price":"+ $79","oil.included":"Oil change included",
+  "price.estimate":"Estimate","price.note":"Indicative price, parts and labour included. The final amount is confirmed before work begins.","price.cta":"Book this service",
+  "price.callInstead":"Or call us directly",
+  "svc.tag":"Services","svc.h2":"Two services. Zero garage visits.","svc.desc":"The two most common maintenance jobs, done right where your vehicle is already parked.",
+  "svc.brakes.title":"Brake Service","svc.brakes.desc":"Pads and rotors, front or rear. We inspect the whole system before touching anything. If a part doesn't need replacing, we'll tell you.",
+  "svc.brakes.pill1":"Pads","svc.brakes.pill2":"Rotors","svc.brakes.pill3":"Inspection included",
+  "svc.oil.title":"Oil Change","svc.oil.desc":"Oil and filter replaced in under 30 minutes. We use the grade recommended for your vehicle, never generic bargain oil.",
+  "svc.oil.pill1":"Oil & filter","svc.oil.pill2":"30 minutes","svc.oil.pill3":"On-site",
+  "cmp.tag":"Why not the garage","cmp.h2":"Appointment at 11 AM.<br>Work started at 1 PM. Sound familiar?",
+  "cmp.intro":"You take time off, you drive over, then you wait in a waiting room while your vehicle sits in the garage lot. We do it differently: we come to you, at the time we agreed on.",
+  "cmp.bad.title":"The traditional garage",
+  "cmp.bad.1":"You have to take time off or rearrange your day",
+  "cmp.bad.2":"Appointment set for a time, work started... whenever the garage gets to it",
+  "cmp.bad.3":"Waiting room, or you need to arrange a ride",
+  "cmp.bad.4":"Your vehicle disappears for the whole day",
+  "cmp.bad.5":"Drop it off, wait for a call, then go pick it up",
+  "cmp.good.1":"We come to your home, workplace, or wherever your vehicle is parked",
+  "cmp.good.2":"The time we agree on is the time we work",
+  "cmp.good.3":"You carry on with your day as usual",
+  "cmp.good.4":"Your vehicle never leaves your driveway",
+  "cmp.good.5":"One call, a confirmed price, and it's done",
+  "steps.tag":"Process","steps.h2":"How it works",
+  "step1.n":"Step 01","step1.title":"You call","step1.desc":"Tell us about your vehicle and your availability. It takes two minutes.",
+  "step2.n":"Step 02","step2.title":"We confirm","step2.desc":"Time set, price confirmed. You know exactly what you're paying before we arrive.",
+  "step3.n":"Step 03","step3.title":"We come to you","step3.desc":"Home, work, parking lot: we arrive with all the necessary equipment.",
+  "step4.n":"Step 04","step4.title":"It's done","step4.desc":"New brakes, active warranty, and you never left your driveway.",
+  "war.tag":"Warranty","war.h2":"We stand behind<br>our work.",
+  "war.li1":"Parts <strong>and</strong> labour covered",
+  "war.li2":"A problem with the work done? We come back and fix it.",
+  "war.li3":"Price confirmed in advance, no surprises on the invoice",
+  "war.stat1":"Months","war.stat2":"Kilometres",
+  "zone.tag":"Service area","zone.h2":"We travel<br>throughout your area.",
+  "zone.showMore":"+ 27 more cities","zone.showLess":"Show less",
+  "zone.p1":"Based in Laval, we cover the whole greater region: North Shore, South Shore, Laurentians, Montérégie.",
+  "zone.p2":"Don't see your city? Call us anyway, we often serve the surrounding areas.",
+  "contact.tag":"Contact","contact.h2":"One call<br>and it's all set.","contact.p":"Tell us about your vehicle and your availability. We take care of the rest.",
+  "contact.line1":"Main line","contact.line2":"Secondary line",
+  "book.lead":"Or book directly online — we'll confirm by phone.",
+  "book.name":"Full name","book.phone":"Phone","book.email":"Email","book.city":"City",
+  "book.date":"Preferred date","book.time":"Preferred time","book.vehicle":"Vehicle","book.vehiclePh":"E.g. Honda Civic 2019",
+  "book.notes":"Notes (optional)","book.submit":"Book my appointment",
+  "book.sending":"Sending…","book.success":"Thanks! Your request has been received, we'll confirm shortly.",
+  "book.error":"Something went wrong. Call us directly, or try again.","book.notReady":"Online booking coming soon — call us in the meantime.",
+  "footer.p":"Home brake and oil change service: Laval, Montreal, Terrebonne and surrounding areas.",
+  "vid.tag":"In action","vid.h2":"Us, at work, at our customers' homes.","vid.desc":"Real service calls, filmed on site.","vid.play":"Play video","vid.hint":"Swipe to see more",
+  "misc.otherBrand":"Other brand",
+  "sidedot.estimation":"Estimate","sidedot.services":"Services","sidedot.process":"Process","sidedot.warranty":"Warranty","sidedot.zone":"Area","sidedot.contact":"Contact"
+ },
+ es:{
+  "nav.estimation":"Cotización","nav.services":"Servicios","nav.warranty":"Garantía","nav.zone":"Zona",
+  "mobile.call":"Llamar ahora",
+  "hero.tag":"Servicio móvil · Laval · Montreal · Terrebonne",
+  "hero.h1":"Sus frenos.<br><span class=\"out\">Cambiados en su casa.</span>",
+  "hero.sub":"Nos desplazamos con el equipo completo: frenos y cambios de aceite realizados en su entrada, su estacionamiento o su lugar de trabajo. Sin citas que se alargan, sin días perdidos en una sala de espera: confirmamos el precio antes de empezar, hacemos el trabajo frente a usted, y usted se queda con una garantía por escrito. Usted no se mueve.",
+  "trust.warranty.title":"3 meses / 5,000 km","trust.warranty.sub":"Garantía en piezas y mano de obra",
+  "trust.price.title":"Precio confirmado","trust.price.sub":"Antes de tocar su vehículo",
+  "trust.mobile.title":"Vamos hacia usted","trust.mobile.sub":"Casa, trabajo, estacionamiento",
+  "trust.honest.title":"Inspección transparente","trust.honest.sub":"Le avisamos si una pieza no necesita cambio",
+  "config.title":"Configurador de cotización en vivo","config.online":"En línea",
+  "stage.hint":"Busque su marca<br>luego seleccione su modelo",
+  "rotor.front":"Eje delantero","rotor.rear":"Eje trasero","rotor.included":"Incluido","rotor.notIncluded":"No incluido",
+  "car.waiting":"En espera",
+  "field.brand":"Marca","field.model":"Modelo","field.change":"Cambiar","field.year":"Año","field.yearOfVehicle":"Año del vehículo","field.city":"Ciudad","field.axles":"Ejes",
+  "axle.awdHint":"Recomendado: los SUV y vehículos de tracción integral se benefician de cambiar los 4 frenos juntos.",
+  "search.placeholder":"Busque su marca…","search.clearAria":"Borrar marca",
+  "search.noResults":"Sin resultados. Contáctenos, cubrimos toda la región.","search.modelsCount":"modelos",
+  "axle.front":"Delantero","axle.front2":"2 frenos","axle.both":"Delantero + trasero","axle.both4":"4 frenos",
+  "axle.svgFront":"DELANTERO","axle.svgRear":"TRASERO",
+  "addon.label":"Agregar cambio de aceite","addon.price":"+ 79 $","oil.included":"Cambio de aceite incluido",
+  "price.estimate":"Estimación","price.note":"Precio indicativo, piezas y mano de obra incluidas. El monto final se confirma antes de comenzar el trabajo.","price.cta":"Reservar este servicio",
+  "price.callInstead":"O llámenos directamente",
+  "svc.tag":"Servicios","svc.h2":"Dos servicios. Cero talleres.","svc.desc":"Los dos mantenimientos más frecuentes, realizados donde ya está estacionado su vehículo.",
+  "svc.brakes.title":"Cambio de frenos","svc.brakes.desc":"Pastillas y discos, delanteros o traseros. Inspeccionamos todo el sistema antes de tocar nada. Si una pieza no necesita cambio, se lo decimos.",
+  "svc.brakes.pill1":"Pastillas","svc.brakes.pill2":"Discos","svc.brakes.pill3":"Inspección incluida",
+  "svc.oil.title":"Cambio de aceite","svc.oil.desc":"Aceite y filtro reemplazados en menos de 30 minutos. Usamos el grado recomendado para su vehículo, nunca aceite genérico barato.",
+  "svc.oil.pill1":"Aceite y filtro","svc.oil.pill2":"30 minutos","svc.oil.pill3":"En el lugar",
+  "cmp.tag":"Por qué no el taller","cmp.h2":"Cita a las 11 a. m.<br>Trabajo iniciado a la 1 p. m. ¿Le suena familiar?",
+  "cmp.intro":"Usted pide permiso en el trabajo, se traslada, y luego espera en una sala de espera mientras su vehículo espera en el patio del taller. Nosotros lo hacemos diferente: vamos a donde usted está, a la hora acordada.",
+  "cmp.bad.title":"El taller tradicional",
+  "cmp.bad.1":"Debe pedir permiso o reorganizar su día",
+  "cmp.bad.2":"Cita a una hora, trabajo iniciado... cuando el taller esté listo",
+  "cmp.bad.3":"Sala de espera, o necesita conseguir transporte",
+  "cmp.bad.4":"Su vehículo desaparece todo el día",
+  "cmp.bad.5":"Deja el vehículo, espera una llamada, y luego va a recogerlo",
+  "cmp.good.1":"Llegamos a su casa, su trabajo, o donde esté estacionado su vehículo",
+  "cmp.good.2":"La hora acordada es la hora en que trabajamos",
+  "cmp.good.3":"Usted continúa su día con normalidad",
+  "cmp.good.4":"Su vehículo nunca sale de su entrada",
+  "cmp.good.5":"Una llamada, un precio confirmado, listo",
+  "steps.tag":"Proceso","steps.h2":"Cómo funciona",
+  "step1.n":"Paso 01","step1.title":"Usted llama","step1.desc":"Cuéntenos sobre su vehículo y su disponibilidad. Toma dos minutos.",
+  "step2.n":"Paso 02","step2.title":"Confirmamos","step2.desc":"Hora fijada, precio confirmado. Usted sabe exactamente qué pagará antes de que lleguemos.",
+  "step3.n":"Paso 03","step3.title":"Vamos hacia usted","step3.desc":"Casa, trabajo, estacionamiento: llegamos con todo el equipo necesario.",
+  "step4.n":"Paso 04","step4.title":"Listo","step4.desc":"Frenos nuevos, garantía activa, y usted nunca salió de su entrada.",
+  "war.tag":"Garantía","war.h2":"Respaldamos<br>nuestro trabajo.",
+  "war.li1":"Piezas <strong>y</strong> mano de obra cubiertas",
+  "war.li2":"¿Un problema con el trabajo realizado? Volvemos a corregirlo.",
+  "war.li3":"Precio confirmado por adelantado, sin sorpresas en la factura",
+  "war.stat1":"Meses","war.stat2":"Kilómetros",
+  "zone.tag":"Zona de servicio","zone.h2":"Nos desplazamos<br>por toda su zona.",
+  "zone.showMore":"+ 27 ciudades más","zone.showLess":"Mostrar menos",
+  "zone.p1":"Con base en Laval, cubrimos toda la región metropolitana: Rive-Nord, Rive-Sud, Laurentides, Montérégie.",
+  "zone.p2":"¿No ve su ciudad en la lista? Llámenos de todas formas, a menudo damos servicio en los alrededores.",
+  "contact.tag":"Contacto","contact.h2":"Una llamada<br>y todo listo.","contact.p":"Cuéntenos sobre su vehículo y su disponibilidad. Nosotros nos encargamos del resto.",
+  "contact.line1":"Línea principal","contact.line2":"Línea secundaria",
+  "book.lead":"O reserve directamente en línea — confirmamos por teléfono.",
+  "book.name":"Nombre completo","book.phone":"Teléfono","book.email":"Correo electrónico","book.city":"Ciudad",
+  "book.date":"Fecha deseada","book.time":"Hora deseada","book.vehicle":"Vehículo","book.vehiclePh":"Ej: Honda Civic 2019",
+  "book.notes":"Notas (opcional)","book.submit":"Reservar mi cita",
+  "book.sending":"Enviando…","book.success":"¡Gracias! Su solicitud fue recibida, le confirmaremos en breve.",
+  "book.error":"Error al enviar. Llámenos directamente, o intente de nuevo.","book.notReady":"Reserva en línea disponible pronto — llámenos mientras tanto.",
+  "footer.p":"Servicio de frenos y cambio de aceite a domicilio: Laval, Montreal, Terrebonne y alrededores.",
+  "vid.tag":"En acción","vid.h2":"Nosotros, trabajando, en casa de nuestros clientes.","vid.desc":"Intervenciones reales, filmadas en el lugar.","vid.play":"Reproducir video","vid.hint":"Deslice para ver más",
+  "misc.otherBrand":"Otra marca",
+  "sidedot.estimation":"Cotización","sidedot.services":"Servicios","sidedot.process":"Proceso","sidedot.warranty":"Garantía","sidedot.zone":"Zona","sidedot.contact":"Contacto"
+ }
+};
+
+const BODY_LABELS={
+ fr:{berline:"Berline",hatch:"Hatchback",coupe:"Coupé",sport:"Sport",vusc:"VUS compact",vus:"VUS",familiale:"Familiale",pickup:"Camionnette",van:"Fourgonnette"},
+ en:{berline:"Sedan",hatch:"Hatchback",coupe:"Coupe",sport:"Sports Car",vusc:"Compact SUV",vus:"SUV",familiale:"Wagon",pickup:"Pickup Truck",van:"Van"},
+ es:{berline:"Sedán",hatch:"Hatchback",coupe:"Cupé",sport:"Deportivo",vusc:"SUV compacto",vus:"SUV",familiale:"Familiar",pickup:"Camioneta",van:"Furgoneta"}
+};
+
+const MARQUEE_I18N={
+ fr:[["Garantie","3 mois / 5000 km"],["Déplacement","Inclus"],["Zone","Laval · Montréal · Terrebonne"],["Freins","Plaquettes et disques"],["Zone","Longueuil · Brossard · Boucherville"],["Huile","+ filtre, 30 minutes"],["Zone","Repentigny · Blainville · Saint-Eustache"],["Prix","Confirmé avant de commencer"],["Zone","Chambly · Vaudreuil-Dorion · Saint-Jean-sur-Richelieu"]],
+ en:[["Warranty","3 months / 5,000 km"],["Travel","Included"],["Area","Laval · Montreal · Terrebonne"],["Brakes","Pads and rotors"],["Area","Longueuil · Brossard · Boucherville"],["Oil","+ filter, 30 minutes"],["Area","Repentigny · Blainville · Saint-Eustache"],["Price","Confirmed before we start"],["Area","Chambly · Vaudreuil-Dorion · Saint-Jean-sur-Richelieu"]],
+ es:[["Garantía","3 meses / 5,000 km"],["Desplazamiento","Incluido"],["Zona","Laval · Montreal · Terrebonne"],["Frenos","Pastillas y discos"],["Zona","Longueuil · Brossard · Boucherville"],["Aceite","+ filtro, 30 minutos"],["Zona","Repentigny · Blainville · Saint-Eustache"],["Precio","Confirmado antes de empezar"],["Zona","Chambly · Vaudreuil-Dorion · Saint-Jean-sur-Richelieu"]]
+};
+
+const OTHER_KEY="Autre marque";
+let curLang="fr";
+const tr=k=>(I18N[curLang]&&I18N[curLang][k])||k;
+const brandDisplay=b=>b===OTHER_KEY?tr("misc.otherBrand"):b;
+let BODY_LABEL=BODY_LABELS.fr;
+
+const bldMarquee=()=>{
+  const items=MARQUEE_I18N[curLang];
+  const one=items.map(([a,b])=>`<span class="marquee-item"><b>${a}</b> ${b}</span>`).join('');
+  return one+one;
+};
+
+function applyStaticI18n(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent=tr(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML=tr(el.dataset.i18nHtml); });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{ el.placeholder=tr(el.dataset.i18nPlaceholder); });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{ el.setAttribute('aria-label',tr(el.dataset.i18nAria)); });
+}
+
+const SIDEDOT_KEYS={pourquoi:'cmp.tag',estimation:'sidedot.estimation',services:'sidedot.services',comment:'sidedot.process',garantie:'sidedot.warranty',zone:'sidedot.zone',contact:'sidedot.contact'};
+
+function setLang(lang){
+  if(!I18N[lang]) lang='fr';
+  curLang=lang; BODY_LABEL=BODY_LABELS[lang];
+  document.getElementById('htmlRoot').lang=lang;
+  try{ localStorage.setItem('rd_lang',lang); }catch(e){}
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  applyStaticI18n();
+  $('mq').innerHTML=bldMarquee();
+  document.querySelectorAll('.side-dots .dot').forEach(d=>{
+    const key=d.getAttribute('href').slice(1);
+    if(SIDEDOT_KEYS[key]) d.setAttribute('data-label',tr(SIDEDOT_KEYS[key]));
+  });
+  if(root && root.classList.contains('open')) drawList(bInput.value);
+  if(S.brand===OTHER_KEY) bInput.value=brandDisplay(S.brand);
+  if(S.brand){
+    buildModelGrid();
+    if(S.model){
+      const sel=[...document.querySelectorAll('.mcard')].find(c=>c.dataset.m===S.model);
+      if(sel) sel.classList.add('on');
+    }
+  }
+  render();
+  if(S.body) paintBrakes();
+  const zct=$('zchipsToggle'), zctl=$('zchipsToggleLabel');
+  if(zct && zctl) zctl.textContent = zct.classList.contains('open') ? tr('zone.showLess') : tr('zone.showMore');
+}
+
+/* reveal */
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const io=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting){
+  setTimeout(()=>e.target.classList.add('in'),i*70);
+  io.unobserve(e.target);
+}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* barre de progression de scroll */
+const scrollBar=$('scrollProgress');
+function updateScrollBar(){
+  const h=document.documentElement;
+  const max=h.scrollHeight-h.clientHeight;
+  scrollBar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+}
+window.addEventListener('scroll',updateScrollBar,{passive:true});
+updateScrollBar();
+
+/* spotlight qui suit le curseur (desktop seulement) */
+if(matchMedia('(hover:hover)').matches){
+  const spot=$('spotlight'); let spotRaf;
+  document.addEventListener('mousemove',e=>{
+    spot.classList.add('on');
+    cancelAnimationFrame(spotRaf);
+    spotRaf=requestAnimationFrame(()=>{
+      spot.style.setProperty('--mx',e.clientX+'px');
+      spot.style.setProperty('--my',e.clientY+'px');
+    });
+  },{passive:true});
+  document.addEventListener('mouseleave',()=>spot.classList.remove('on'));
+}
+
+/* nav à points — section active en scrollant */
+const sideDots=[...document.querySelectorAll('.side-dots .dot')];
+const dotSections=sideDots.map(d=>document.querySelector(d.getAttribute('href')));
+const dotObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    const idx=dotSections.indexOf(e.target);
+    if(idx<0 || !e.isIntersecting) return;
+    sideDots.forEach(d=>d.classList.remove('active'));
+    sideDots[idx].classList.add('active');
+  });
+},{rootMargin:'-45% 0px -45% 0px'});
+dotSections.forEach(el=>el&&dotObs.observe(el));
+
+/* tilt 3D léger sur les cartes services */
+if(matchMedia('(hover:hover)').matches && !reduceMotion){
+  document.querySelectorAll('.svc-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(700px) rotateX(${(-py*7).toFixed(2)}deg) rotateY(${(px*9).toFixed(2)}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave',()=>{ card.style.transform=''; });
+  });
+}
+
+/* roue du hero — freinage cinématique au chargement */
+const heroWheel=$('heroWheel');
+if(heroWheel) requestAnimationFrame(()=>requestAnimationFrame(()=>heroWheel.classList.add('go')));
+
+/* galerie vidéo — bouton play custom, pause les autres clips en cours */
+document.querySelectorAll('.vid-wrap').forEach(wrap=>{
+  const video=wrap.querySelector('.vid-el'), btn=wrap.querySelector('.vid-play');
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.vid-el').forEach(v=>{ if(v!==video) v.pause(); });
+    video.play(); btn.classList.add('hide');
+  });
+  video.addEventListener('play',()=>btn.classList.add('hide'));
+  video.addEventListener('pause',()=>btn.classList.remove('hide'));
+});
+
+/* zone desservie — sur mobile, replie la longue liste de villes derrière un bouton */
+const zchipsToggle=$('zchipsToggle'), zchipsMore=$('zchipsMore');
+if(zchipsToggle && zchipsMore){
+  zchipsToggle.addEventListener('click',()=>{
+    const open=zchipsMore.classList.toggle('open');
+    zchipsToggle.classList.toggle('open',open);
+    zchipsToggle.setAttribute('aria-expanded',String(open));
+    $('zchipsToggleLabel').textContent = open ? tr('zone.showLess') : tr('zone.showMore');
+  });
+}
+
+/* formulaire de réservation — envoie vers un webhook Make.com qui notifie
+   par courriel et crée l'événement dans l'agenda Google du propriétaire */
+const BOOKING_WEBHOOK_URL='https://hook.us2.make.com/9q8xaqmx1vh9hbaejj3bo48yvo6lbeq5';
+const bookForm=$('bookForm');
+if(bookForm){
+  const bfCity=$('bfCity'), bfVehicle=$('bfVehicle');
+  bookForm.addEventListener('submit', async e=>{
+    e.preventDefault();
+    if(!bookForm.reportValidity()) return;
+    const statusEl=$('bfStatus'), submitBtn=$('bfSubmit');
+    if(!BOOKING_WEBHOOK_URL){ statusEl.textContent=tr('book.notReady'); return; }
+    const data=Object.fromEntries(new FormData(bookForm).entries());
+    data.lang=curLang; data.source='reviewdirect-site';
+    if(S.brand){
+      data.estimateBrand=S.brand; data.estimateModel=S.model||''; data.estimateYear=S.year||'';
+      data.estimateCity=S.city||''; data.estimateTotal=lastTotal||0;
+      data.estimateAxle = S.axle==='4' ? tr('axle.both4') : tr('axle.front2');
+      data.estimateOil = S.oil ? tr('oil.included') : '';
+    }
+    // rendez-vous d'environ 90 min, pour l'événement d'agenda
+    const start=new Date(`${data.date}T${data.time}:00`);
+    if(!isNaN(start)){
+      data.datetimeStart=start.toISOString();
+      data.datetimeEnd=new Date(start.getTime()+90*60000).toISOString();
+    }
+    submitBtn.disabled=true; statusEl.textContent=tr('book.sending');
+    try{
+      const res=await fetch(BOOKING_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      if(!res.ok) throw new Error('bad status');
+      statusEl.textContent=tr('book.success');
+      bookForm.reset();
+    }catch(err){
+      statusEl.textContent=tr('book.error');
+    }finally{
+      submitBtn.disabled=false;
+    }
+  });
+  window.prefillBookForm=()=>{
+    if(S.city && !bfCity.value) bfCity.value=S.city;
+    if(S.brand && !bfVehicle.value) bfVehicle.value = S.brand===OTHER_KEY ? `${BODY_LABEL[S.body]} ${S.year}` : `${S.brand} ${S.model} ${S.year}`;
+  };
+}
+
+/* bouton "Réserver ce forfait" du configurateur — envoie vers le vrai formulaire,
+   pré-rempli, au lieu de ne rien faire (avant: juste un lien tel:) */
+const priceBookBtn=$('priceBookBtn');
+if(priceBookBtn && bookForm){
+  priceBookBtn.addEventListener('click',e=>{
+    e.preventDefault();
+    if(window.prefillBookForm) window.prefillBookForm();
+    bookForm.scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(()=>{
+      const firstEmpty=['bfName','bfPhone','bfEmail','bfDate','bfTime'].map($).find(el=>el && !el.value);
+      (firstEmpty||$('bfName')).focus();
+    },500);
+  });
+}
+
+/* compteur animé pour les stats de garantie (3 mois / 5000 km) */
+const statObs=new IntersectionObserver(es=>{es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  const el=e.target, target=+el.textContent.replace(/\D/g,''), t0=performance.now(), dur=1100;
+  el.textContent='0';
+  const step=n=>{const p=Math.min((n-t0)/dur,1),ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(target*ease).toLocaleString('fr-CA');
+    if(p<1) requestAnimationFrame(step);};
+  requestAnimationFrame(step);
+  statObs.unobserve(el);
+});},{threshold:.5});
+document.querySelectorAll('.stat .n').forEach(el=>statObs.observe(el));
+
+/* ============ CATALOGUE ============ */
+const CATALOG={
+'Acura':[['ILX','berline',2013,2022],['TLX','berline',2015,2026],['RLX','berline',2014,2020],['Integra','hatch',2023,2026],['RDX','vusc',2007,2026],['MDX','vus',2001,2026],['ZDX','vusc',2010,2026]],
+'Alfa Romeo':[['Giulia','berline',2017,2026],['Stelvio','vusc',2018,2026],['Tonale','vusc',2023,2026]],
+'Audi':[['A3','berline',2006,2026],['A4','berline',2000,2026],['A4 Allroad','familiale',2013,2026],['A5','coupe',2008,2026],['A6','berline',2000,2026],['A7','berline',2012,2026],['A8','berline',2000,2026],['S3','berline',2015,2026],['S4','berline',2000,2026],['RS5','coupe',2013,2026],['Q3','vusc',2015,2026],['Q5','vusc',2009,2026],['Q7','vus',2007,2026],['Q8','vus',2019,2026],['e-tron','vusc',2019,2026],['TT','coupe',2000,2023]],
+'BMW':[['Série 2','coupe',2014,2026],['Série 3','berline',2000,2026],['Série 4','coupe',2014,2026],['Série 5','berline',2000,2026],['Série 7','berline',2000,2026],['M3','berline',2000,2026],['M4','coupe',2015,2026],['i4','berline',2022,2026],['X1','vusc',2010,2026],['X2','vusc',2018,2026],['X3','vusc',2004,2026],['X4','vusc',2015,2026],['X5','vus',2000,2026],['X6','vus',2008,2026],['X7','vus',2019,2026],['iX','vusc',2022,2026],['Z4','sport',2003,2026]],
+'Buick':[['Encore','vusc',2013,2024],['Encore GX','vusc',2020,2026],['Envista','vusc',2024,2026],['Envision','vusc',2016,2026],['Enclave','vus',2008,2026],['Regal','berline',2000,2020],['LaCrosse','berline',2005,2019],['Verano','berline',2012,2017]],
+'Cadillac':[['ATS','berline',2013,2019],['CTS','berline',2003,2019],['CT4','berline',2020,2026],['CT5','berline',2020,2026],['XT4','vusc',2019,2026],['XT5','vusc',2017,2026],['XT6','vus',2020,2026],['Escalade','vus',2000,2026],['Lyriq','vusc',2023,2026],['SRX','vusc',2004,2016]],
+'Chevrolet':[['Spark','hatch',2013,2022],['Sonic','hatch',2012,2020],['Bolt','hatch',2017,2026],['Cruze','berline',2011,2019],['Malibu','berline',2000,2024],['Impala','berline',2000,2020],['Camaro','coupe',2000,2024],['Corvette','sport',2000,2026],['Trax','vusc',2013,2026],['Trailblazer','vusc',2002,2026],['Equinox','vusc',2004,2026],['Blazer','vusc',2000,2026],['Traverse','vus',2008,2026],['Tahoe','vus',2000,2026],['Suburban','vus',2000,2026],['Colorado','pickup',2004,2026],['Silverado','pickup',2000,2026],['Silverado HD','pickup',2000,2026],['Express','van',2000,2026]],
+'Chrysler':[['200','berline',2011,2017],['300','berline',2004,2026],['Pacifica','van',2004,2026]],
+'Dodge':[['Charger','berline',2005,2026],['Challenger','coupe',2008,2023],['Dart','berline',2013,2016],['Journey','vusc',2009,2020],['Hornet','vusc',2023,2026],['Durango','vus',2000,2026],['Grand Caravan','van',2000,2020]],
+'Fiat':[['500','hatch',2012,2019],['500L','hatch',2014,2020],['500X','vusc',2016,2022]],
+'Ford':[['Fiesta','hatch',2011,2019],['Focus','hatch',2000,2018],['Fusion','berline',2006,2020],['Taurus','berline',2000,2019],['Mustang','coupe',2000,2026],['Mustang Mach-E','vusc',2021,2026],['EcoSport','vusc',2018,2022],['Escape','vusc',2001,2026],['Bronco Sport','vusc',2021,2026],['Bronco','vus',2021,2026],['Edge','vusc',2007,2024],['Explorer','vus',2000,2026],['Expedition','vus',2000,2026],['Flex','familiale',2009,2019],['Maverick','pickup',2022,2026],['Ranger','pickup',2000,2026],['F-150','pickup',2000,2026],['F-250','pickup',2000,2026],['F-350','pickup',2000,2026],['Transit','van',2015,2026],['Transit Connect','van',2010,2023]],
+'Genesis':[['G70','berline',2019,2026],['G80','berline',2017,2026],['G90','berline',2017,2026],['GV60','vusc',2023,2026],['GV70','vusc',2022,2026],['GV80','vus',2021,2026]],
+'GMC':[['Terrain','vusc',2010,2026],['Acadia','vus',2007,2026],['Yukon','vus',2000,2026],['Yukon XL','vus',2000,2026],['Canyon','pickup',2004,2026],['Sierra','pickup',2000,2026],['Sierra HD','pickup',2000,2026],['Savana','van',2000,2026]],
+'Honda':[['Fit','hatch',2007,2020],['Civic','berline',2000,2026],['Civic Hatchback','hatch',2017,2026],['Accord','berline',2000,2026],['Insight','berline',2000,2022],['HR-V','vusc',2016,2026],['CR-V','vusc',2000,2026],['Passport','vus',2000,2026],['Pilot','vus',2003,2026],['Prologue','vusc',2024,2026],['Ridgeline','pickup',2006,2026],['Odyssey','van',2000,2026]],
+'Hyundai':[['Accent','hatch',2000,2026],['Elantra','berline',2000,2026],['Elantra GT','hatch',2013,2020],['Sonata','berline',2000,2026],['Veloster','hatch',2012,2021],['Ioniq','hatch',2017,2022],['Ioniq 5','hatch',2022,2026],['Ioniq 6','berline',2023,2026],['Venue','vusc',2020,2026],['Kona','vusc',2018,2026],['Tucson','vusc',2005,2026],['Santa Fe','vus',2001,2026],['Palisade','vus',2020,2026],['Santa Cruz','pickup',2022,2026]],
+'Infiniti':[['Q50','berline',2014,2026],['Q60','coupe',2014,2022],['QX50','vusc',2014,2026],['QX55','vusc',2021,2026],['QX60','vus',2013,2026],['QX80','vus',2004,2026]],
+'Jaguar':[['XE','berline',2017,2020],['XF','berline',2009,2025],['E-Pace','vusc',2018,2025],['F-Pace','vusc',2017,2025],['I-Pace','vusc',2019,2024]],
+'Jeep':[['Renegade','vusc',2015,2023],['Compass','vusc',2007,2026],['Cherokee','vusc',2001,2023],['Grand Cherokee','vus',2000,2026],['Wrangler','vus',2000,2026],['Wagoneer','vus',2022,2026],['Gladiator','pickup',2020,2026]],
+'Kia':[['Rio','hatch',2000,2026],['Forte','berline',2010,2026],['K5','berline',2021,2026],['Optima','berline',2001,2020],['Stinger','berline',2018,2023],['Soul','hatch',2010,2023],['Niro','vusc',2017,2026],['Seltos','vusc',2021,2026],['Sportage','vusc',2000,2026],['EV6','vusc',2022,2026],['Sorento','vus',2003,2026],['Telluride','vus',2020,2026],['Carnival','van',2022,2026],['Sedona','van',2002,2021]],
+'Land Rover':[['Range Rover','vus',2000,2026],['Range Rover Sport','vus',2006,2026],['Evoque','vusc',2012,2026],['Velar','vusc',2018,2026],['Discovery','vus',2000,2026],['Discovery Sport','vusc',2015,2026],['Defender','vus',2020,2026]],
+'Lexus':[['IS','berline',2000,2026],['ES','berline',2000,2026],['GS','berline',2000,2020],['LS','berline',2000,2026],['RC','coupe',2015,2026],['UX','vusc',2019,2026],['NX','vusc',2015,2026],['RX','vusc',2000,2026],['GX','vus',2003,2026],['LX','vus',2000,2026],['TX','vus',2024,2026]],
+'Lincoln':[['MKZ','berline',2007,2020],['Continental','berline',2000,2020],['Corsair','vusc',2020,2026],['MKC','vusc',2015,2019],['Nautilus','vusc',2019,2026],['Aviator','vus',2003,2026],['Navigator','vus',2000,2026]],
+'Maserati':[['Ghibli','berline',2014,2024],['Quattroporte','berline',2000,2024],['Levante','vus',2017,2024],['Grecale','vusc',2023,2026]],
+'Mazda':[['Mazda2','hatch',2011,2014],['Mazda3','berline',2004,2026],['Mazda3 Sport','hatch',2004,2026],['Mazda6','berline',2003,2021],['MX-5','sport',2000,2026],['CX-3','vusc',2016,2021],['CX-30','vusc',2020,2026],['CX-5','vusc',2013,2026],['CX-50','vusc',2023,2026],['CX-70','vus',2025,2026],['CX-9','vus',2007,2023],['CX-90','vus',2024,2026]],
+'Mercedes-Benz':[['Classe A','berline',2019,2026],['Classe C','berline',2000,2026],['Classe E','berline',2000,2026],['Classe S','berline',2000,2026],['CLA','berline',2014,2026],['GLA','vusc',2015,2026],['GLB','vusc',2020,2026],['GLC','vusc',2016,2026],['GLE','vus',2016,2026],['GLS','vus',2016,2026],['Metris','van',2016,2026],['Sprinter','van',2000,2026]],
+'MINI':[['Cooper','hatch',2002,2026],['Clubman','familiale',2008,2024],['Countryman','vusc',2011,2026]],
+'Mitsubishi':[['Mirage','hatch',2014,2026],['Lancer','berline',2002,2017],['RVR','vusc',2011,2026],['Eclipse Cross','vusc',2018,2026],['Outlander','vusc',2003,2026],['Outlander PHEV','vusc',2018,2026]],
+'Nissan':[['Versa','berline',2007,2026],['Versa Note','hatch',2014,2019],['Sentra','berline',2000,2026],['Altima','berline',2000,2026],['Maxima','berline',2000,2023],['Leaf','hatch',2011,2026],['370Z','sport',2009,2020],['Z','sport',2023,2026],['Kicks','vusc',2018,2026],['Qashqai','vusc',2022,2026],['Rogue','vusc',2008,2026],['Murano','vusc',2003,2026],['Ariya','vusc',2023,2026],['Pathfinder','vus',2000,2026],['Armada','vus',2004,2026],['Frontier','pickup',2000,2026],['Titan','pickup',2004,2026],['NV200','van',2013,2021]],
+'Polestar':[['Polestar 2','berline',2021,2026],['Polestar 3','vusc',2024,2026]],
+'Porsche':[['Panamera','berline',2010,2026],['Taycan','berline',2020,2026],['Macan','vusc',2015,2026],['Cayenne','vus',2003,2026]],
+'Ram':[['1500','pickup',2000,2026],['2500','pickup',2000,2026],['3500','pickup',2000,2026],['ProMaster','van',2014,2026],['ProMaster City','van',2015,2022]],
+'Subaru':[['Impreza','hatch',2000,2026],['Legacy','berline',2000,2026],['WRX','berline',2002,2026],['BRZ','sport',2013,2026],['Crosstrek','vusc',2013,2026],['Forester','vusc',2000,2026],['Solterra','vusc',2023,2026],['Outback','familiale',2000,2026],['Ascent','vus',2019,2026]],
+'Tesla':[['Model 3','berline',2017,2026],['Model S','berline',2012,2026],['Model Y','vusc',2020,2026],['Model X','vus',2015,2026],['Cybertruck','pickup',2024,2026]],
+'Toyota':[['Yaris','hatch',2006,2020],['Corolla','berline',2000,2026],['Corolla Hatchback','hatch',2019,2026],['Camry','berline',2000,2026],['Avalon','berline',2000,2022],['Prius','hatch',2000,2026],['Matrix','hatch',2003,2013],['GR86','sport',2022,2026],['GR Supra','sport',2020,2026],['C-HR','vusc',2018,2026],['Corolla Cross','vusc',2022,2026],['RAV4','vusc',2000,2026],['Venza','vusc',2009,2026],['bZ4X','vusc',2023,2026],['Highlander','vus',2001,2026],['4Runner','vus',2000,2026],['Sequoia','vus',2001,2026],['Tacoma','pickup',2000,2026],['Tundra','pickup',2000,2026],['Sienna','van',2000,2026]],
+'Volkswagen':[['Golf','hatch',2000,2024],['GTI','hatch',2000,2026],['Golf R','hatch',2004,2024],['Sportwagen','familiale',2015,2019],['Jetta','berline',2000,2026],['Passat','berline',2000,2022],['Arteon','berline',2019,2023],['Beetle','hatch',2000,2019],['Taos','vusc',2022,2026],['Tiguan','vusc',2009,2026],['ID.4','vusc',2021,2026],['Atlas','vus',2018,2026],['Atlas Cross Sport','vus',2020,2026]],
+'Volvo':[['S60','berline',2000,2026],['S90','berline',2017,2026],['V60','familiale',2015,2026],['V90','familiale',2017,2026],['XC40','vusc',2019,2026],['XC60','vusc',2010,2026],['XC90','vus',2003,2026],['EX30','vusc',2025,2026]],
+'Autre marque':[['Berline','berline',2000,2026],['Hatchback','hatch',2000,2026],['Coupé','coupe',2000,2026],['Voiture sport','sport',2000,2026],['VUS compact','vusc',2000,2026],['VUS','vus',2000,2026],['Familiale','familiale',2000,2026],['Camionnette','pickup',2000,2026],['Fourgonnette','van',2000,2026]]
+};
+
+/* deux catégories de prix — petite voiture vs VUS/hatchback/etc (toujours plaquettes + disques) */
+const SIZE_CLASS={berline:'small',coupe:'small',hatch:'big',sport:'big',vusc:'big',vus:'big',familiale:'big',pickup:'big',van:'big'};
+const SIZE_BASE={small:{'2':250,'4':550},big:{'2':300,'4':650}};
+
+const SHAPES={
+berline:{
+ body:"M22 156 L82 156 A30 30 0 0 1 142 156 L300 156 A30 30 0 0 1 360 156 L418 156 L418 126 Q418 112 400 108 L344 96 L300 56 Q290 46 266 46 L176 46 Q152 46 142 56 L100 92 L40 106 Q22 110 22 126 Z",
+ glass:["M152 60 Q160 52 178 52 L208 52 L208 92 L120 92 Z","M218 52 L264 52 Q282 52 290 60 L316 92 L218 92 Z"],
+ lines:["M212 92 L212 152","M22 132 L418 132"],
+ wheels:[[112,152,30],[330,152,30]]},
+hatch:{
+ body:"M24 156 L82 156 A29 29 0 0 1 140 156 L272 156 A29 29 0 0 1 330 156 L364 156 L364 124 Q364 106 346 100 L318 52 Q310 44 288 44 L172 44 Q150 44 140 54 L100 92 L44 104 Q24 108 24 126 Z",
+ glass:["M150 58 Q158 50 174 50 L204 50 L204 92 L116 92 Z","M214 50 L286 50 Q302 50 310 58 L328 92 L214 92 Z"],
+ lines:["M208 92 L208 152","M24 130 L364 130"],
+ wheels:[[111,152,29],[301,152,29]]},
+coupe:{
+ body:"M24 156 L84 156 A29 29 0 0 1 142 156 L302 156 A29 29 0 0 1 360 156 L416 156 L416 128 Q416 114 398 110 L348 100 L296 62 Q284 54 258 54 L178 54 Q156 54 146 63 L104 96 L42 108 Q24 112 24 128 Z",
+ glass:["M158 68 Q166 61 182 61 L254 61 Q274 61 284 69 L310 96 L126 96 Z"],
+ lines:["M258 96 L258 152","M24 132 L416 132"],
+ wheels:[[113,152,29],[331,152,29]]},
+sport:{
+ body:"M20 156 L76 156 A27 27 0 0 1 130 156 L310 156 A27 27 0 0 1 364 156 L436 156 L436 134 Q436 120 416 116 L354 108 L302 78 Q290 72 264 72 L194 72 Q172 72 160 80 L112 104 L38 116 Q20 120 20 136 Z",
+ glass:["M172 84 Q180 78 196 78 L262 78 Q278 78 288 86 L306 104 L138 104 Z"],
+ lines:["M20 138 L436 138"],
+ wheels:[[103,152,27],[337,152,27]]},
+vusc:{
+ body:"M22 156 L82 156 A32 32 0 0 1 146 156 L300 156 A32 32 0 0 1 364 156 L420 156 L420 122 Q420 108 402 104 L350 94 L314 46 Q304 38 282 38 L166 38 Q144 38 134 48 L98 92 L40 102 Q22 106 22 122 Z",
+ glass:["M144 50 Q152 42 168 42 L206 42 L206 92 L114 92 Z","M216 42 L280 42 Q298 42 306 50 L330 92 L216 92 Z"],
+ lines:["M211 92 L211 152","M22 128 L420 128"],
+ wheels:[[114,152,32],[332,152,32]]},
+vus:{
+ body:"M22 156 L82 156 A35 35 0 0 1 152 156 L306 156 A35 35 0 0 1 376 156 L428 156 L428 44 Q428 30 408 30 L164 30 Q142 30 132 40 L96 88 L40 98 Q22 102 22 120 Z",
+ glass:["M142 44 Q150 36 166 36 L204 36 L204 88 L112 88 Z","M214 36 L282 36 L282 88 L214 88 Z","M292 36 L360 36 L360 88 L292 88 Z"],
+ lines:["M209 88 L209 152","M287 88 L287 152","M22 124 L428 124"],
+ wheels:[[117,152,35],[341,152,35]]},
+familiale:{
+ body:"M24 156 L82 156 A29 29 0 0 1 140 156 L302 156 A29 29 0 0 1 360 156 L406 156 L406 106 Q406 92 390 88 L382 50 Q376 44 356 44 L176 44 Q152 44 142 54 L100 92 L42 104 Q24 108 24 126 Z",
+ glass:["M152 56 Q160 50 176 50 L206 50 L206 90 L118 90 Z","M216 50 L284 50 L284 90 L216 90 Z","M294 50 L350 50 Q364 50 368 56 L376 90 L294 90 Z"],
+ lines:["M211 90 L211 152","M289 90 L289 152","M24 130 L406 130"],
+ wheels:[[111,152,29],[331,152,29]]},
+pickup:{
+ body:"M22 156 L80 156 A32 32 0 0 1 144 156 L316 156 A32 32 0 0 1 380 156 L428 156 L428 98 L248 98 L248 56 Q248 44 228 44 L174 44 Q154 44 146 54 L104 92 L42 104 Q22 108 22 126 Z",
+ glass:["M156 58 Q162 50 178 50 L224 50 Q234 50 234 60 L234 90 L122 90 Z"],
+ lines:["M258 112 L418 112","M22 130 L248 130"],
+ wheels:[[112,152,32],[348,152,32]]},
+van:{
+ body:"M22 156 L84 156 A30 30 0 0 1 144 156 L306 156 A30 30 0 0 1 366 156 L420 156 L420 110 Q420 94 402 90 L364 38 Q354 28 332 28 L170 28 Q150 28 140 38 L98 90 L40 100 Q22 104 22 122 Z",
+ glass:["M150 42 Q158 34 174 34 L204 34 L204 90 L112 90 Z","M214 34 L328 34 Q346 34 354 42 L376 90 L214 90 Z"],
+ lines:["M209 90 L209 152","M22 124 L420 124"],
+ wheels:[[114,152,30],[336,152,30]]}
+};
+
+/* ══════════════════════════════════════════════════════════════
+   IMAGES RÉELLES DES VÉHICULES — PlateToVIN Vehicle Images CDN
+   ──────────────────────────────────────────────────────────────
+   MODE 'free'      → aperçu gratuit, aucune clé requise.
+                      Basse résolution + filigrane + angle avant
+                      seulement. Parfait pour tester.
+
+   MODE 'licensed'  → pleine résolution, sans filigrane.
+                      1. Prends un forfait avec "vehicle images"
+                         sur platetovin.com/plans
+                      2. Ajoute reviewdirect.ca dans les domaines
+                         autorisés de ton tableau de bord
+                      3. Change la ligne ci-dessous pour 'licensed'
+                      Aucune clé à mettre dans le code : ils
+                      autorisent par nom de domaine.
+
+   MODE 'off'       → silhouettes dessinées seulement.
+   ══════════════════════════════════════════════════════════════ */
+const IMG_MODE  = 'free';        // 'free' | 'licensed' | 'off'
+const IMG_ANGLE = 'side';        // front, front_angle, side, rear, rear_angle
+const IMG_COLOR = 'base';        // base, silver, black, white, gray, red
+
+/* Noms français → noms utilisés par leur catalogue */
+const SEARCH_ALIAS={
+ 'Série 2':'2 Series','Série 3':'3 Series','Série 4':'4 Series','Série 5':'5 Series','Série 7':'7 Series',
+ 'Classe A':'A-Class','Classe C':'C-Class','Classe E':'E-Class','Classe S':'S-Class',
+ 'CLA':'CLA-Class','GLA':'GLA-Class','GLB':'GLB-Class','GLC':'GLC-Class','GLE':'GLE-Class','GLS':'GLS-Class',
+ 'M3':'3 Series M3','M4':'4 Series M4',
+ 'Bolt':'Bolt EV','RVR':'Outlander Sport','Qashqai':'Rogue Sport',
+ 'Mazda3 Sport':'Mazda3','Sportwagen':'Golf Sportwagen','Evoque':'Range Rover Evoque',
+ 'Velar':'Range Rover Velar','Clubman':'Cooper Clubman','Countryman':'Cooper Countryman',
+ 'Civic Hatchback':'Civic','Corolla Hatchback':'Corolla','Silverado HD':'Silverado 2500HD',
+ 'Sierra HD':'Sierra 2500HD','Outlander PHEV':'Outlander','Versa Note':'Versa Note'
+};
+
+/* Modèles où PlateToVIN renvoie une photo qui n'est pas le bon véhicule
+   (ex: Ioniq 5 renvoie la photo du Ioniq, un char complètement différent).
+   On force la silhouette dessinée plutôt qu'une fausse photo. */
+const NO_REAL_PHOTO=new Set(['Ioniq 5']);
+
+function imgUrl(brand,model,year){
+  if(IMG_MODE==='off' || brand==='Autre marque' || NO_REAL_PHOTO.has(model)) return null;
+  const q=new URLSearchParams();
+  q.set('search',`${brand} ${SEARCH_ALIAS[model]||model}`);
+  q.set('year',year);
+  if(IMG_MODE==='free'){ q.set('tier','free'); }
+  else { q.set('angle',IMG_ANGLE); q.set('color',IMG_COLOR); q.set('size','large'); }
+  return `https://vehicle-images.platetovin.com/image?${q.toString()}`;
+}
+
+function loadVisual(){
+  const box=$('carPhoto'), img=$('carImg'), svg=$('carSvg'), row=$('rotorRow');
+  const showSilhouette=()=>{
+    box.classList.remove('show'); svg.style.display=''; row.classList.remove('show');
+    drawCar();
+  };
+  const url=imgUrl(S.brand,S.model,S.year);
+  if(!url){ showSilhouette(); return; }
+  const probe=new Image();
+  probe.onload=()=>{
+    if(probe.naturalWidth<40){ showSilhouette(); return; }
+    img.src=url; img.alt=`${S.brand} ${S.model} ${S.year}`;
+    box.classList.add('show'); svg.style.display='none'; row.classList.add('show');
+    paintBrakes();
+  };
+  probe.onerror=showSilhouette;
+  probe.src=url;
+}
+
+/* ============ state ============ */
+const YEAR_MIN=2000, YEAR_MAX=2026;
+const S={brand:null,model:null,body:null,year:'2019',axle:'2',oil:false,city:'Laval'};
+let lastTotal=0;
+/* frais de déplacement par ville — Laval=0 (base), zone principale=+50$, zone élargie=+80$ */
+const CITY_ZONES={
+ 'Laval':50,
+ 'Montréal':50,'Longueuil':50,'Brossard':50,'Boucherville':50,'Saint-Hubert':50,'Saint-Bruno-de-Montarville':50,
+ 'Boisbriand':50,'Rosemère':50,'Sainte-Thérèse':50,'Blainville':50,'Saint-Eustache':50,'Deux-Montagnes':50,
+ 'Dollard-des-Ormeaux':50,'Beaconsfield':50,
+ 'Terrebonne':80,'Repentigny':80,'Mascouche':80,'Saint-Jérôme':80,'Mirabel':80,'Sainte-Anne-des-Plaines':80,
+ 'Varennes':80,'Saint-Amable':80,'Chambly':80,'La Prairie':80,'Châteauguay':80,'Vaudreuil-Dorion':80,
+ 'Saint-Jean-sur-Richelieu':80,'Napierville':80,'Saint-Rémi':80
+};
+const stage=$('stage'), scanline=$('scanline'), carSvg=$('carSvg');
+const yrInput=$('yr'), yrBounds=$('yrBounds');
+
+/* ============ brand search ============ */
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function mark(t,q){
+  if(!q) return t;
+  const i=norm(t).indexOf(norm(q));
+  return i<0?t:t.slice(0,i)+'<span class="hl">'+t.slice(i,i+q.length)+'</span>'+t.slice(i+q.length);
+}
+const root=$('cbBrand'), bInput=$('brandInput'), bList=$('brandList');
+let cursor=-1, current=[];
+const ALL=Object.keys(CATALOG);
+
+function drawList(q){
+  current=ALL.filter(b=>norm(brandDisplay(b)).includes(norm(q)));
+  if(!current.length){ bList.innerHTML='<div class="opt-none">'+tr('search.noResults')+'</div>'; return; }
+  bList.innerHTML=current.map((b,i)=>
+    `<button class="opt${i===cursor?' cursor':''}" data-i="${i}" role="option" style="animation-delay:${Math.min(i*22,180)}ms"><span class="opt-nm">${mark(brandDisplay(b),q)}</span><span class="bt">${CATALOG[b].length} ${tr('search.modelsCount')}</span></button>`).join('');
+}
+const openList=()=>{root.classList.add('open');bInput.setAttribute('aria-expanded','true');drawList(bInput.value);};
+const closeList=()=>{root.classList.remove('open');bInput.setAttribute('aria-expanded','false');cursor=-1;};
+
+function pickBrand(i){
+  const b=current[i]; if(!b) return;
+  bInput.value=brandDisplay(b); root.classList.add('picked'); closeList();
+  S.brand=b; S.model=null; S.body=null;
+  applyYearRange(YEAR_MIN,YEAR_MAX);
+  $('f1').classList.add('done'); $('f2').classList.remove('done');
+  buildModelGrid();
+  $('mgridShell').classList.add('open');
+  render();
+}
+
+bInput.addEventListener('focus',()=>{bInput.select();openList();});
+bInput.addEventListener('input',()=>{root.classList.remove('picked');cursor=-1;openList();});
+bInput.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault(); if(!root.classList.contains('open')) openList();
+    cursor+=e.key==='ArrowDown'?1:-1;
+    cursor=Math.max(0,Math.min(current.length-1,cursor));
+    drawList(bInput.value);
+    const el=bList.querySelector('.cursor'); if(el) el.scrollIntoView({block:'nearest'});
+  } else if(e.key==='Enter'){ e.preventDefault(); pickBrand(cursor>=0?cursor:0); }
+  else if(e.key==='Escape'){ closeList(); bInput.blur(); }
+});
+bList.addEventListener('mousedown',e=>{const b=e.target.closest('.opt'); if(!b) return; e.preventDefault(); pickBrand(+b.dataset.i);});
+$('brandClear').addEventListener('click',()=>{bInput.value='';root.classList.remove('picked');bInput.focus();openList();});
+document.addEventListener('click',e=>{if(!root.contains(e.target)) closeList();});
+
+/* ============ model grid (click to select) ============ */
+function miniSVG(type){
+  const sh=SHAPES[type];
+  const wh=sh.wheels.map(([cx,cy,r])=>`<circle class="mwh" cx="${cx}" cy="${cy}" r="${r-4}"/>`).join('');
+  return `<svg viewBox="10 20 440 150" preserveAspectRatio="xMidYMid meet"><path class="msil" d="${sh.body}"/>${wh}</svg>`;
+}
+
+function buildModelGrid(){
+  const list=CATALOG[S.brand]||[];
+  const isOther=S.brand===OTHER_KEY;
+  $('mgrid').innerHTML=list.map(([m,bt,ymin,ymax],i)=>
+    `<button class="mcard" data-m="${m}" data-t="${bt}" data-ymin="${ymin??YEAR_MIN}" data-ymax="${ymax??YEAR_MAX}" style="animation-delay:${Math.min(i*32,600)}ms">
+       ${miniSVG(bt)}
+       <span class="mname">${isOther?BODY_LABEL[bt]:m}</span>
+       <span class="mbody">${BODY_LABEL[bt]}</span>
+     </button>`).join('');
+}
+
+/* clampe le slider d'année à la plage de production du modèle choisi */
+function applyYearRange(ymin,ymax){
+  yrInput.min=ymin; yrInput.max=ymax;
+  let y=+S.year;
+  if(y<ymin) y=ymin; else if(y>ymax) y=ymax;
+  S.year=String(y); yrInput.value=S.year; $('yrVal').textContent=S.year;
+  yrBounds.textContent=`${ymin} – ${ymax}`;
+}
+
+$('mgrid').addEventListener('click',e=>{
+  const c=e.target.closest('.mcard'); if(!c) return;
+  document.querySelectorAll('.mcard').forEach(x=>x.classList.remove('on'));
+  c.classList.add('on');
+  S.model=c.dataset.m; S.body=c.dataset.t;
+  applyYearRange(+c.dataset.ymin,+c.dataset.ymax);
+  $('f2').classList.add('done');
+  stage.classList.add('armed');
+  loadVisual();
+  scanline.classList.remove('go'); void scanline.offsetWidth; scanline.classList.add('go');
+  render();
+});
+
+$('clearModel').addEventListener('click',()=>{
+  document.querySelectorAll('.mcard').forEach(x=>x.classList.remove('on'));
+  S.model=null; S.body=null;
+  applyYearRange(YEAR_MIN,YEAR_MAX);
+  $('f2').classList.remove('done');
+  stage.classList.remove('armed');
+  $('carPhoto').classList.remove('show');
+  $('rotorRow').classList.remove('show');
+  $('carSvg').style.display='';
+  render();
+});
+
+/* ============ controls ============ */
+let yrT;
+$('yr').addEventListener('input',e=>{
+  S.year=e.target.value; $('yrVal').textContent=S.year; render();
+  clearTimeout(yrT);
+  yrT=setTimeout(()=>{ if(S.body) loadVisual(); },450);
+});
+
+$('segAxle').addEventListener('click',e=>{
+  const o=e.target.closest('.seg-opt'); if(!o) return;
+  document.querySelectorAll('#segAxle .seg-opt').forEach(x=>x.classList.remove('on'));
+  o.classList.add('on'); S.axle=o.dataset.axle;
+  $('pillAxle').classList.toggle('right',S.axle==='4');
+  $('f5').classList.add('done'); paintBrakes(); render();
+});
+$('citySelect').addEventListener('change',e=>{
+  S.city=e.target.value;
+  $('f4').classList.add('done');
+  render();
+});
+const oilBtn=$('addonOil');
+const toggleOil=()=>{S.oil=!S.oil;oilBtn.classList.toggle('on',S.oil);render();};
+oilBtn.addEventListener('click',toggleOil);
+oilBtn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleOil();}});
+
+/* ============ drawing ============ */
+function wheelSVG(cx,cy,r,id){
+  const rot=r-9, sp=[];
+  for(let i=0;i<6;i++){
+    const a=i*Math.PI/3;
+    sp.push(`M${(cx+Math.cos(a)*4).toFixed(1)} ${(cy+Math.sin(a)*4).toFixed(1)} L${(cx+Math.cos(a)*(rot-3)).toFixed(1)} ${(cy+Math.sin(a)*(rot-3)).toFixed(1)}`);
+  }
+  return `<g id="${id}">
+    <circle class="tire" cx="${cx}" cy="${cy}" r="${r}"/>
+    <circle class="rim" cx="${cx}" cy="${cy}" r="${r-4}"/>
+    <circle class="halo" cx="${cx}" cy="${cy}" r="${rot+4}" style="transform-origin:${cx}px ${cy}px;"/>
+    <circle class="rotor" cx="${cx}" cy="${cy}" r="${rot}"/>
+    <path class="spoke" d="${sp.join(' ')}"/>
+    <path class="cal" d="M${cx-5} ${cy-rot-3} h10 a3 3 0 0 1 3 3 v8 a3 3 0 0 1 -3 3 h-10 a3 3 0 0 1 -3 -3 v-8 a3 3 0 0 1 3 -3 z"/>
+  </g>`;
+}
+function drawCar(){
+  const sh=SHAPES[S.body]; if(!sh) return;
+  const [f,r]=sh.wheels;
+  carSvg.innerHTML=
+    `<line class="ground" x1="6" y1="190" x2="454" y2="190"/>`+
+    `<path class="cbody" d="${sh.body}"/>`+
+    sh.glass.map(g=>`<path class="cglass" d="${g}"/>`).join('')+
+    sh.lines.map(l=>`<path class="cline" d="${l}"/>`).join('')+
+    wheelSVG(f[0],f[1],f[2],'wF')+wheelSVG(r[0],r[1],r[2],'wR')+
+    `<text class="axl" id="axF" x="${f[0]}" y="205" text-anchor="middle">${tr('axle.svgFront')}</text>`+
+    `<text class="axl" id="axR" x="${r[0]}" y="205" text-anchor="middle">${tr('axle.svgRear')}</text>`;
+  carSvg.classList.remove('swap'); void carSvg.offsetWidth; carSvg.classList.add('swap');
+  paintBrakes();
+}
+function paintBrakes(){
+  const rear=S.axle==='4';
+  const wF=$('wF');
+  if(wF){
+    wF.classList.add('hot'); $('axF').classList.add('on');
+    $('wR').classList.toggle('hot',rear); $('axR').classList.toggle('on',rear);
+  }
+  $('rcF').classList.add('hot');
+  $('rcR').classList.toggle('hot',rear);
+  $('stR').textContent = rear ? tr('rotor.included') : tr('rotor.notIncluded');
+}
+
+/* ============ price ============ */
+const OIL=79;
+let raf,shown=0;
+function tweenTo(t){
+  cancelAnimationFrame(raf);
+  const from=shown,d=t-from,dur=540,t0=performance.now();
+  if(d!==0){ const amt=$('price').parentElement; amt.classList.remove('bump'); void amt.offsetWidth; amt.classList.add('bump'); }
+  const step=n=>{const p=Math.min((n-t0)/dur,1),e=1-Math.pow(1-p,3);
+    shown=Math.round(from+d*e); $('price').textContent=shown.toLocaleString('fr-CA');
+    if(p<1) raf=requestAnimationFrame(step);};
+  raf=requestAnimationFrame(step);
+}
+function render(){
+  const ready=!!(S.brand&&S.model&&S.body);
+  $('carNm').textContent = ready
+    ? (S.brand===OTHER_KEY ? BODY_LABEL[S.body] : `${S.brand} ${S.model}`)
+    : '—';
+  $('carMeta').innerHTML = ready
+    ? `${S.year} · ${BODY_LABEL[S.body]} · <em>${S.axle==='4'?tr('axle.both4'):tr('axle.front2')}</em>`
+    : tr('car.waiting');
+  $('priceBox').classList.toggle('ready',ready);
+  let total=0;
+  if(ready){
+    total=SIZE_BASE[SIZE_CLASS[S.body]][S.axle];
+    total += CITY_ZONES[S.city] ?? 0;
+    if(S.oil) total+=OIL;
+  }
+  lastTotal=total;
+  tweenTo(total);
+  updateAwdHint();
+  if(ready && window.prefillBookForm) window.prefillBookForm();
+}
+
+/* conseil 4 freins pour VUS / traction intégrale */
+function updateAwdHint(){
+  const el=$('awdHint'); if(!el) return;
+  const show=(S.body==='vus'||S.body==='vusc') && S.axle==='2';
+  el.classList.toggle('show',show);
+}
+
+/* ============ init langue ============ */
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+let initialLang='fr';
+try{ const saved=localStorage.getItem('rd_lang'); if(saved && I18N[saved]) initialLang=saved; }catch(e){}
+setLang(initialLang);
+</script>
+
+</body>
+</html>
