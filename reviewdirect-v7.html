@@ -452,6 +452,7 @@
   @keyframes dotPulse{0%{box-shadow:0 0 0 0 rgba(61,220,151,.45);}70%{box-shadow:0 0 0 6px rgba(61,220,151,0);}100%{box-shadow:0 0 0 0 rgba(61,220,151,0);}}
   .ph .n{font-family:'IBM Plex Mono',monospace;font-size:1.32rem;font-weight:700;}
   .book-form{max-width:560px;margin:44px auto 0;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px;}
+  .calendly-btn{display:flex;}
   .bf-lead{grid-column:1/-1;color:var(--dust);font-size:.9rem;margin-bottom:20px;text-align:center;}
   .bf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
   @media (max-width:560px){.bf-row{grid-template-columns:1fr;}}
@@ -769,7 +770,7 @@
               <span class="price-amt"><span class="cur">$</span><span id="price">0</span></span>
             </div>
             <p class="price-note" data-i18n="price.note">Prix indicatif, pièces et main-d'œuvre incluses. Le montant final est confirmé avant le début des travaux.</p>
-            <a class="cta" href="#bookForm" id="priceBookBtn">
+            <a class="cta" href="#calendlyBtn" id="priceBookBtn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="17" height="17"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m9 16 2 2 4-4"/></svg>
               <span data-i18n="price.cta">Réserver ce forfait</span>
             </a>
@@ -910,51 +911,15 @@
       <a class="ph" href="tel:4389283471"><span class="t"><span class="ph-dot"></span><span data-i18n="contact.line2">Ligne secondaire</span></span><span class="n">438 928 3471</span></a>
     </div>
 
-    <form class="book-form rv" id="bookForm" novalidate>
-      <p class="bf-lead" data-i18n="book.lead">Ou réservez directement en ligne — nous confirmons par téléphone.</p>
-      <div class="bf-row">
-        <div class="bf-field">
-          <label for="bfName" data-i18n="book.name">Nom complet</label>
-          <input type="text" id="bfName" name="name" required autocomplete="name">
-        </div>
-        <div class="bf-field">
-          <label for="bfPhone" data-i18n="book.phone">Téléphone</label>
-          <input type="tel" id="bfPhone" name="phone" required autocomplete="tel">
-        </div>
-      </div>
-      <div class="bf-row">
-        <div class="bf-field">
-          <label for="bfEmail" data-i18n="book.email">Courriel</label>
-          <input type="email" id="bfEmail" name="email" required autocomplete="email">
-        </div>
-        <div class="bf-field">
-          <label for="bfCity" data-i18n="book.city">Ville</label>
-          <input type="text" id="bfCity" name="city" required autocomplete="address-level2">
-        </div>
-      </div>
-      <div class="bf-row">
-        <div class="bf-field">
-          <label for="bfDate" data-i18n="book.date">Date souhaitée</label>
-          <input type="date" id="bfDate" name="date" required>
-        </div>
-        <div class="bf-field">
-          <label for="bfTime" data-i18n="book.time">Heure souhaitée</label>
-          <input type="time" id="bfTime" name="time" required>
-        </div>
-      </div>
-      <div class="bf-field bf-full">
-        <label for="bfVehicle" data-i18n="book.vehicle">Véhicule</label>
-        <input type="text" id="bfVehicle" name="vehicle" data-i18n-placeholder="book.vehiclePh" placeholder="Ex : Honda Civic 2019">
-      </div>
-      <div class="bf-field bf-full">
-        <label for="bfNotes" data-i18n="book.notes">Notes (optionnel)</label>
-        <textarea id="bfNotes" name="notes" rows="3"></textarea>
-      </div>
-      <button type="submit" class="bf-submit" id="bfSubmit"><span data-i18n="book.submit">Réserver mon rendez-vous</span></button>
-      <p class="bf-status" id="bfStatus" role="status" aria-live="polite"></p>
-    </form>
+    <p class="bf-lead" data-i18n="book.lead">Ou réservez directement en ligne — choisissez votre date et votre heure.</p>
+    <button type="button" class="cta calendly-btn rv" id="calendlyBtn" style="max-width:360px;margin:20px auto 0;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="17" height="17"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m9 16 2 2 4-4"/></svg>
+      <span data-i18n="book.openCalendar">Choisir un rendez-vous</span>
+    </button>
   </div>
 </section>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <footer>
   <div class="wrap ft">
@@ -1028,7 +993,8 @@ const I18N={
   "zone.p2":"Votre ville n'est pas dans la liste? Appelez-nous quand même, nous desservons souvent les environs.",
   "contact.tag":"Contact","contact.h2":"Un appel<br>et tout est réglé.","contact.p":"Indiquez-nous votre véhicule et vos disponibilités. Nous nous occupons du reste.",
   "contact.line1":"Ligne principale","contact.line2":"Ligne secondaire",
-  "book.lead":"Ou réservez directement en ligne — nous confirmons par téléphone.",
+  "book.lead":"Ou réservez directement en ligne — choisissez votre date et votre heure.",
+  "book.openCalendar":"Choisir un rendez-vous",
   "book.name":"Nom complet","book.phone":"Téléphone","book.email":"Courriel","book.city":"Ville",
   "book.date":"Date souhaitée","book.time":"Heure souhaitée","book.vehicle":"Véhicule","book.vehiclePh":"Ex : Honda Civic 2019",
   "book.notes":"Notes (optionnel)","book.submit":"Réserver mon rendez-vous",
@@ -1096,7 +1062,8 @@ const I18N={
   "zone.p2":"Don't see your city? Call us anyway, we often serve the surrounding areas.",
   "contact.tag":"Contact","contact.h2":"One call<br>and it's all set.","contact.p":"Tell us about your vehicle and your availability. We take care of the rest.",
   "contact.line1":"Main line","contact.line2":"Secondary line",
-  "book.lead":"Or book directly online — we'll confirm by phone.",
+  "book.lead":"Or book directly online — choose your date and time.",
+  "book.openCalendar":"Choose an appointment",
   "book.name":"Full name","book.phone":"Phone","book.email":"Email","book.city":"City",
   "book.date":"Preferred date","book.time":"Preferred time","book.vehicle":"Vehicle","book.vehiclePh":"E.g. Honda Civic 2019",
   "book.notes":"Notes (optional)","book.submit":"Book my appointment",
@@ -1164,7 +1131,8 @@ const I18N={
   "zone.p2":"¿No ve su ciudad en la lista? Llámenos de todas formas, a menudo damos servicio en los alrededores.",
   "contact.tag":"Contacto","contact.h2":"Una llamada<br>y todo listo.","contact.p":"Cuéntenos sobre su vehículo y su disponibilidad. Nosotros nos encargamos del resto.",
   "contact.line1":"Línea principal","contact.line2":"Línea secundaria",
-  "book.lead":"O reserve directamente en línea — confirmamos por teléfono.",
+  "book.lead":"O reserve directamente en línea — elija su fecha y hora.",
+  "book.openCalendar":"Elegir una cita",
   "book.name":"Nombre completo","book.phone":"Teléfono","book.email":"Correo electrónico","book.city":"Ciudad",
   "book.date":"Fecha deseada","book.time":"Hora deseada","book.vehicle":"Vehículo","book.vehiclePh":"Ej: Honda Civic 2019",
   "book.notes":"Notas (opcional)","book.submit":"Reservar mi cita",
@@ -1320,67 +1288,26 @@ if(zchipsToggle && zchipsMore){
   });
 }
 
-/* formulaire de réservation — envoie vers un webhook Make.com qui notifie
-   par courriel et crée l'événement dans l'agenda Google du propriétaire */
-const BOOKING_WEBHOOK_URL='https://hook.us2.make.com/9q8xaqmx1vh9hbaejj3bo48yvo6lbeq5';
-const bookForm=$('bookForm');
-if(bookForm){
-  const bfCity=$('bfCity'), bfVehicle=$('bfVehicle');
-  bookForm.addEventListener('submit', async e=>{
-    e.preventDefault();
-    if(!bookForm.reportValidity()) return;
-    const statusEl=$('bfStatus'), submitBtn=$('bfSubmit');
-    if(!BOOKING_WEBHOOK_URL){ statusEl.textContent=tr('book.notReady'); return; }
-    const data=Object.fromEntries(new FormData(bookForm).entries());
-    data.lang=curLang; data.source='reviewdirect-site';
-    // toujours envoyer les mêmes champs (même vides) — un webhook Make sans
-    // Data Structure explicite peut mal interpréter des clés absentes selon
-    // les requêtes, ce qui a déjà cassé le mappage de date/heure une fois.
-    data.estimateBrand = S.brand && S.brand!==OTHER_KEY ? S.brand : '';
-    data.estimateModel = S.model || '';
-    data.estimateYear = S.brand ? (S.year||'') : '';
-    data.estimateCity = S.brand ? (S.city||'') : '';
-    data.estimateTotal = S.brand ? (lastTotal||0) : '';
-    data.estimateAxle = S.brand ? (S.axle==='4' ? tr('axle.both4') : tr('axle.front2')) : '';
-    data.estimateOil = (S.brand && S.oil) ? tr('oil.included') : '';
-    // rendez-vous d'environ 90 min, pour l'événement d'agenda
-    const start=new Date(`${data.date}T${data.time}:00`);
-    if(!isNaN(start)){
-      data.datetimeStart=start.toISOString();
-      data.datetimeEnd=new Date(start.getTime()+90*60000).toISOString();
-    }
-    submitBtn.disabled=true; statusEl.textContent=tr('book.sending');
-    try{
-      const res=await fetch(BOOKING_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-      if(!res.ok) throw new Error('bad status');
-      statusEl.textContent=tr('book.success');
-      bookForm.reset();
-    }catch(err){
-      statusEl.textContent=tr('book.error');
-    }finally{
-      submitBtn.disabled=false;
-    }
-  });
-  window.prefillBookForm=()=>{
-    if(S.city && !bfCity.value) bfCity.value=S.city;
-    if(S.brand && !bfVehicle.value) bfVehicle.value = S.brand===OTHER_KEY ? `${BODY_LABEL[S.body]} ${S.year}` : `${S.brand} ${S.model} ${S.year}`;
-  };
+/* réservation Calendly — ouvre en popup plein écran (pas d'embed géant dans la
+   page, important sur mobile où on doit éviter le double scroll) */
+const CALENDLY_URL='https://calendly.com/onlymodels-ca/30min?background_color=0b0d10&text_color=e8ecf1&primary_color=ff1700&hide_gdpr_banner=1';
+function openCalendly(){
+  if(!window.Calendly) return;
+  const opts={url:CALENDLY_URL};
+  if(S.brand){
+    // glisse le véhicule + prix dans l'unique question Calendly ("anything that
+    // will help prepare"), sans ambiguïté vu qu'il n'y a qu'une seule question (a1)
+    const vehicle = S.brand===OTHER_KEY ? `${BODY_LABEL[S.body]} ${S.year}` : `${S.brand} ${S.model} ${S.year}`;
+    let note = `Véhicule : ${vehicle}`;
+    if(S.city) note += ` — Ville : ${S.city}`;
+    if(lastTotal) note += ` — Estimation en ligne : ${lastTotal}$`;
+    opts.prefill = { customAnswers: { a1: note } };
+  }
+  Calendly.initPopupWidget(opts);
 }
-
-/* bouton "Réserver ce forfait" du configurateur — envoie vers le vrai formulaire,
-   pré-rempli, au lieu de ne rien faire (avant: juste un lien tel:) */
-const priceBookBtn=$('priceBookBtn');
-if(priceBookBtn && bookForm){
-  priceBookBtn.addEventListener('click',e=>{
-    e.preventDefault();
-    if(window.prefillBookForm) window.prefillBookForm();
-    bookForm.scrollIntoView({behavior:'smooth',block:'center'});
-    setTimeout(()=>{
-      const firstEmpty=['bfName','bfPhone','bfEmail','bfDate','bfTime'].map($).find(el=>el && !el.value);
-      (firstEmpty||$('bfName')).focus();
-    },500);
-  });
-}
+const priceBookBtn=$('priceBookBtn'), calendlyBtn=$('calendlyBtn');
+if(priceBookBtn) priceBookBtn.addEventListener('click',e=>{ e.preventDefault(); openCalendly(); });
+if(calendlyBtn) calendlyBtn.addEventListener('click',e=>{ e.preventDefault(); openCalendly(); });
 
 /* sur mobile seulement, le configurateur (sélection du véhicule + prix) remonte
    juste après le Hero pour que le client puisse commencer son estimation sans
@@ -1793,7 +1720,6 @@ function render(){
   lastTotal=total;
   tweenTo(total);
   updateAwdHint();
-  if(ready && window.prefillBookForm) window.prefillBookForm();
 }
 
 /* conseil 4 freins pour VUS / traction intégrale */
