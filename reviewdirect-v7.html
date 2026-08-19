@@ -1298,7 +1298,10 @@ function openCalendly(){
     // glisse le véhicule + prix dans l'unique question Calendly ("anything that
     // will help prepare"), sans ambiguïté vu qu'il n'y a qu'une seule question (a1)
     const vehicle = S.brand===OTHER_KEY ? `${BODY_LABEL[S.body]} ${S.year}` : `${S.brand} ${S.model} ${S.year}`;
+    const service = S.axle==='4' ? 'Freins avant + arrière (4 freins)' : 'Freins avant (2 freins)';
     let note = `Véhicule : ${vehicle}`;
+    note += ` — Service : ${service}`;
+    if(S.oil) note += ` + changement d'huile`;
     if(S.city) note += ` — Ville : ${S.city}`;
     if(lastTotal) note += ` — Estimation en ligne : ${lastTotal}$`;
     opts.prefill = { customAnswers: { a1: note } };
