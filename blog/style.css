@@ -1,0 +1,66 @@
+:root{
+  --void:#0b0d10; --graphite:#12151a; --panel:#171b21; --panel-2:#1e232b;
+  --line:#282e37; --line-soft:#1f242c; --dust:#7d8896; --chalk:#e8ecf1;
+  --heat:#ff5b1f; --ember:#ffb43d; --heat-glow:rgba(255,91,31,.30); --ok:#3ddc97;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--void);color:var(--chalk);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:800px;margin:0 auto;padding:0 26px;}
+h1,h2,h3{font-family:'Inter',sans-serif;font-weight:800;line-height:1.15;letter-spacing:-.01em;}
+:focus-visible{outline:2px solid var(--heat);outline-offset:3px;border-radius:4px;}
+
+/* header */
+header{position:sticky;top:0;z-index:80;background:rgba(11,13,16,.88);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line-soft);}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 26px;max-width:900px;margin:0 auto;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em;}
+.logo-mark{width:24px;height:24px;border-radius:50%;border:2.5px solid var(--heat);position:relative;flex-shrink:0;box-shadow:0 0 14px var(--heat-glow);}
+.logo-mark::after{content:'';position:absolute;inset:5px;border-radius:50%;border:1.5px solid rgba(255,91,31,.45);}
+.logo em{font-style:normal;color:var(--heat);}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:.88rem;color:var(--dust);font-weight:500;}
+.nav-links a:hover{color:var(--chalk);}
+.nav-call{font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:700;padding:9px 16px;border-radius:999px;background:var(--heat);color:#0b0d10;white-space:nowrap;}
+@media (max-width:560px){.nav-links a:not(.nav-call){display:none;}}
+
+/* breadcrumb */
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.05em;color:var(--dust);padding:22px 0 0;}
+.crumb a{color:var(--dust);} .crumb a:hover{color:var(--heat);}
+
+/* article */
+.art-hero{padding:26px 0 10px;}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--heat);display:inline-flex;align-items:center;gap:9px;}
+.tag::before{content:'';width:20px;height:1px;background:var(--heat);}
+.art-hero h1{font-size:clamp(1.9rem,4.4vw,2.7rem);margin:16px 0 10px;}
+.art-meta{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--dust);}
+.art-body{padding:34px 0 20px;font-size:1.04rem;color:#d6dbe2;}
+.art-body p{margin:0 0 20px;}
+.art-body h2{font-size:1.5rem;margin:38px 0 14px;color:var(--chalk);}
+.art-body h3{font-size:1.2rem;margin:28px 0 12px;color:var(--chalk);}
+.art-body ul,.art-body ol{margin:0 0 20px;padding-left:22px;}
+.art-body li{margin:0 0 9px;}
+.art-body strong{color:var(--chalk);}
+.art-body a.inline-link{color:var(--heat);text-decoration:underline;text-underline-offset:3px;}
+
+/* callout CTA */
+.callout{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--heat);border-radius:12px;padding:22px 24px;margin:30px 0;}
+.callout p{margin:0 0 14px;color:var(--chalk);}
+.callout .cta{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.92rem;padding:12px 22px;border-radius:999px;background:var(--heat);color:#0b0d10;transition:transform .16s;}
+.callout .cta:hover{transform:translateY(-1px);}
+
+/* related / index cards */
+.post-grid{display:grid;gap:18px;padding:30px 0 60px;}
+.post-card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px;transition:border-color .18s,transform .18s;}
+.post-card:hover{border-color:var(--heat);transform:translateY(-2px);}
+.post-card .pc-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--heat);letter-spacing:.1em;text-transform:uppercase;}
+.post-card h2{font-size:1.25rem;margin:9px 0 8px;}
+.post-card p{color:var(--dust);font-size:.92rem;margin:0;}
+
+.hub-hero{padding:50px 0 10px;text-align:center;}
+.hub-hero h1{font-size:clamp(2rem,5vw,2.8rem);margin:16px 0 12px;}
+.hub-hero p{color:var(--dust);max-width:560px;margin:0 auto;}
+
+footer{border-top:1px solid var(--line-soft);padding:34px 0 44px;margin-top:20px;}
+.ft-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.86rem;color:var(--dust);}
+.ft-row a:hover{color:var(--heat);}
